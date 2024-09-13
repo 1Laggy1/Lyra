@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     CharacterController2D CC;
     float horizontalMove;
+
     [SerializeField]
     float runSpeed;
     bool crouch;
@@ -19,16 +21,24 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         CC = GetComponent<CharacterController2D>();
+        if (!isLocalPlayer)
+        {
+            CC.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if (Input.GetButton("Jump"))
         {
             // Gradually increase the jump input value up to maxJumpInput
-            currentJumpInput = Mathf.Lerp(currentJumpInput, maxJumpInput, jumpInputSpeed * Time.deltaTime);
+            currentJumpInput = Mathf.Lerp(
+                currentJumpInput,
+                maxJumpInput,
+                jumpInputSpeed * Time.deltaTime
+            );
         }
         else
         {
@@ -41,16 +51,17 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
-        } 
+        }
         else
         {
             crouch = false;
         }
     }
-    void FixedUpdate ()
+
+    void FixedUpdate()
     {
         Debug.Log(Input.GetAxisRaw("Jump"));
-        CC.Move(horizontalMove*Time.fixedDeltaTime, crouch, jump, currentJumpInput );
+        CC.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, currentJumpInput);
         jump = false;
     }
 }
