@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : NetworkBehaviour
 {
-    CharacterController2D CC;
+    CharacterController2D cC;
     float horizontalMove;
 
     [SerializeField]
@@ -13,17 +13,17 @@ public class PlayerMovement : NetworkBehaviour
     bool crouch;
     bool jump;
 
-    public float maxJumpInput = 1f;
-    public float jumpInputSpeed = 2f;
+    public float MaxJumpInput = 1f;
+    public float JumpInputSpeed = 2f;
     private float currentJumpInput = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        CC = GetComponent<CharacterController2D>();
+        cC = GetComponent<CharacterController2D>();
         if (!isLocalPlayer)
         {
-            CC.enabled = false;
+            cC.enabled = false;
         }
     }
 
@@ -36,14 +36,13 @@ public class PlayerMovement : NetworkBehaviour
             // Gradually increase the jump input value up to maxJumpInput
             currentJumpInput = Mathf.Lerp(
                 currentJumpInput,
-                maxJumpInput,
-                jumpInputSpeed * Time.deltaTime
-            );
+                MaxJumpInput,
+                JumpInputSpeed * Time.deltaTime);
         }
         else
         {
             // Gradually decrease the jump input value down to 0
-            currentJumpInput = Mathf.Lerp(currentJumpInput, 0f, jumpInputSpeed * Time.deltaTime);
+            currentJumpInput = Mathf.Lerp(currentJumpInput, 0f, JumpInputSpeed * Time.deltaTime);
         }
 
         // Debug or use the jump input value to control jumping force
@@ -61,7 +60,7 @@ public class PlayerMovement : NetworkBehaviour
     void FixedUpdate()
     {
         Debug.Log(Input.GetAxisRaw("Jump"));
-        CC.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, currentJumpInput);
+        cC.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, currentJumpInput);
         jump = false;
     }
 }
