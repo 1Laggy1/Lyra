@@ -3,5 +3,5 @@ using UnityEngine;
 
 public struct ConnectMessage : NetworkMessage
 {
-    public string message;
+    public string Message;
 }

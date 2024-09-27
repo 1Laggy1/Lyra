@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour
 {
+    string characterName;
+
     // Start is called before the first frame update
     void Start() { }
 
@@ -13,6 +14,16 @@ public class CharacterSelection : MonoBehaviour
 
     public void OnTextChanged(string character)
     {
+        ChangeCharacter(character);
+    }
+
+    public string ChangeCharacter(string character)
+    {
         PlayerPrefs.SetString("Character", character);
+        characterName = character;
+        return characterName;
     }
 }
+
+
+

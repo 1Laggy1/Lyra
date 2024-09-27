@@ -8,10 +8,10 @@ public class MyNetworkManager : NetworkManager
     string characterPicked;
 
     [SerializeField]
-    GameObject KaydenPref;
+    GameObject kaydenPref;
 
     [SerializeField]
-    GameObject LyraPref;
+    GameObject lyraPref;
 
     public override void OnStartServer()
     {
@@ -30,8 +30,8 @@ public class MyNetworkManager : NetworkManager
         base.OnClientConnect();
 
         // you can send the message here, or wherever else you want
-        ConnectMessage characterMessage = new ConnectMessage();
-        characterMessage.message = PlayerPrefs.GetString("Character");
+        ConnectMessage characterMessage = default(ConnectMessage);
+        characterMessage.Message = PlayerPrefs.GetString("Character");
 
         NetworkClient.Send(characterMessage);
     }
@@ -41,13 +41,13 @@ public class MyNetworkManager : NetworkManager
         // playerPrefab is the one assigned in the inspector in Network
         // Manager but you can use different prefabs per race for example
         GameObject gameobject;
-        if (message.message == "Kayden")
+        if (message.Message == "Kayden")
         {
-            gameobject = Instantiate(KaydenPref);
+            gameobject = Instantiate(kaydenPref);
         }
         else
         {
-            gameobject = Instantiate(LyraPref);
+            gameobject = Instantiate(lyraPref);
         }
 
         // call this to use this gameobject as the primary controller
