@@ -17,6 +17,8 @@ public class PlayerMovement : NetworkBehaviour
     public float JumpInputSpeed = 2f;
     private float currentJumpInput = 0f;
 
+    private IUseable currentUseable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class PlayerMovement : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        Use();
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if (Input.GetButton("Jump"))
         {
@@ -62,5 +65,22 @@ public class PlayerMovement : NetworkBehaviour
         Debug.Log(Input.GetAxisRaw("Jump"));
         cC.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, currentJumpInput);
         jump = false;
+    }
+
+    void Use()
+    {
+        if (Input.GetButtonDown("Submit") && isLocalPlayer)
+        {
+            currentUseable.Use();
+            return;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Useable")
+        {
+            currentUseable = other.gameObject.GetComponent<IUseable>();
+        }
     }
 }
