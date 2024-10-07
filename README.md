@@ -6,6 +6,15 @@ Story based 2d multiplayer platformer for 2 players.
 
 We expect to made multiplayer using mirror and steam frameworks. Also planning to add features like steam remote play and ip connecting.
 
+# Lab3
+
+![steam1](Media/steam.png)
+![steam2](Media/steam2.png)
+
+![ipAddress](Media/ipaddress.png)
+
+![ER](Media/ER.png)
+
 # Story
 
 Kayden, with his extraordinary strength and agility, has always felt like a misfit, not because he was running from something but because he has no memory of his origins. He doesn’t know where his powers come from or why he possesses them, but he has learned to control his abilities over time. Despite his incredible physical prowess, Kayden is driven by a deep, unsettling void—he longs to understand his past, to find out who or what gave him his abilities. His journey with Lyra is just as much about uncovering his own identity as it is about survival.

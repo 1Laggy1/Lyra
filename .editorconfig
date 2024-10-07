@@ -1,6 +1,8 @@
 [*.cs]
-dotnet_diagnostic.CA* = error
-dotnet_diagnostic.SA* = error
+dotnet_diagnostic.SA*.severity = error
+
+# Якщо використовуються правила CA (Code Analysis), також змініть їх на помилки
+dotnet_diagnostic.CA*.severity = error
 
 # SA1027: Use tabs correctly
 dotnet_diagnostic.SA1027.severity = none
