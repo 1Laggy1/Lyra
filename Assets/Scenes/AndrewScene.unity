@@ -278,8 +278,8 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
-  KaydenPref: {fileID: 2637177920481676454, guid: 39c98e6ca1768b8468808e910ad4bcb7, type: 3}
-  LyraPref: {fileID: 2244333039126102870, guid: a20999d791d95394eaaf29d5ff08634c, type: 3}
+  kaydenPref: {fileID: 2637177920481676454, guid: 39c98e6ca1768b8468808e910ad4bcb7, type: 3}
+  lyraPref: {fileID: 2244333039126102870, guid: a20999d791d95394eaaf29d5ff08634c, type: 3}
 --- !u!1 &449963111
 GameObject:
   m_ObjectHideFlags: 0

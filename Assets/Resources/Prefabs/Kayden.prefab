@@ -136,9 +136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3123cf5ada03c4149ba8f071683869f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   runSpeed: 77
-  maxJumpInput: 1
-  jumpInputSpeed: 2
+  MaxJumpInput: 1
+  JumpInputSpeed: 2
 --- !u!114 &8346771151398781471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,20 +154,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7c7cdb90123ec4991fee799e527d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 100000
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.007
-  m_AirControl: 1
-  m_WhatIsGround:
+  jumpForce: 400
+  crouchSpeed: 0.36
+  movementSmoothing: 0.01
+  airControl: 1
+  whatIsGround:
     serializedVersion: 2
     m_Bits: 128
-  m_GroundCheck: {fileID: 2417690651130794473}
-  m_CeilingCheck: {fileID: 4243031559840036849}
-  m_CrouchDisableCollider: {fileID: 7736046870096421024}
-  maxJumpHeight: 5
-  jumpSpeed: 20
-  fallSpeed: 7
-  hoverBuffer: 1.06
+  groundCheck: {fileID: 2417690651130794473}
+  ceilingCheck: {fileID: 4243031559840036849}
+  crouchDisableCollider: {fileID: 7736046870096421024}
+  MaxJumpHeight: 7
+  JumpSpeed: 20
+  FallSpeed: 5
+  HoverBuffer: 0.2
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -293,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 0
+  _assetId: 2491382648
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
