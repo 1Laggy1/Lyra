@@ -109,8 +109,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   runSpeed: 50
-  maxJumpInput: 1
-  jumpInputSpeed: 2
+  MaxJumpInput: 1
+  JumpInputSpeed: 2
 --- !u!114 &5783039994807129420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,20 +123,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7c7cdb90123ec4991fee799e527d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 100000
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.007
-  m_AirControl: 1
-  m_WhatIsGround:
+  jumpForce: 400
+  crouchSpeed: 0.36
+  movementSmoothing: 0.03
+  airControl: 1
+  whatIsGround:
     serializedVersion: 2
     m_Bits: 128
-  m_GroundCheck: {fileID: 3355391214834405587}
-  m_CeilingCheck: {fileID: 1462563924698371253}
-  m_CrouchDisableCollider: {fileID: 7076362013628178079}
-  maxJumpHeight: 2
-  jumpSpeed: 12
-  fallSpeed: 7
-  hoverBuffer: 1.06
+  groundCheck: {fileID: 3355391214834405587}
+  ceilingCheck: {fileID: 1462563924698371253}
+  crouchDisableCollider: {fileID: 7076362013628178079}
+  MaxJumpHeight: 4
+  JumpSpeed: 15
+  FallSpeed: 5
+  HoverBuffer: 0.2
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
