@@ -1,6 +1,8 @@
 [*.cs]
-dotnet_diagnostic.CA* = error
-dotnet_diagnostic.SA* = error
+dotnet_diagnostic.SA*.severity = error
+
+dotnet_diagnostic.CA*.severity = error
+
 
 # SA1027: Use tabs correctly
 dotnet_diagnostic.SA1027.severity = none
