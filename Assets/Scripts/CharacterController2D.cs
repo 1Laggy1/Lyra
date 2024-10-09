@@ -145,11 +145,11 @@ public class CharacterController2D : MonoBehaviour
         }
 
         // While the jump button is held, continue flight if below the max height
-        if (isFlying && isHoldingJump && transform.position.y < startingYPosition + MaxJumpHeight)
+        if (isFlying && isHoldingJump && transform.position.y < startingYPosition + MaxJumpHeight && !Physics2D.OverlapCircle(ceilingCheck.position, KCeilingRadius, whatIsGround))
         {
             FlyUpward();
         }
-        else if (isFlying && (!isHoldingJump || transform.position.y >= startingYPosition + MaxJumpHeight))
+        else if (isFlying && ((!isHoldingJump || transform.position.y >= startingYPosition + MaxJumpHeight) || Physics2D.OverlapCircle(ceilingCheck.position, KCeilingRadius, whatIsGround)))
         {
             StopFlight();
         }

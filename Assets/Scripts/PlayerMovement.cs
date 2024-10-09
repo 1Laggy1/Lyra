@@ -69,7 +69,7 @@ public class PlayerMovement : NetworkBehaviour
 
     void Use()
     {
-        if (Input.GetButtonDown("Submit") && isLocalPlayer)
+        if (Input.GetButtonDown("Submit") && isLocalPlayer && currentUseable != null)
         {
             currentUseable.Use();
             return;
@@ -81,6 +81,14 @@ public class PlayerMovement : NetworkBehaviour
         if (other.gameObject.tag == "Useable")
         {
             currentUseable = other.gameObject.GetComponent<IUseable>();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Useable")
+        {
+            currentUseable = null;
         }
     }
 }
