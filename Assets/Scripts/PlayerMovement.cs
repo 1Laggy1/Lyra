@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerMovement : NetworkBehaviour
 {
     CharacterController2D cC;
+    [SerializeField]
+    PlayerCombat pc;
     float horizontalMove;
 
     [SerializeField]
@@ -33,6 +35,7 @@ public class PlayerMovement : NetworkBehaviour
     void Update()
     {
         Use();
+        Attack();
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if (Input.GetButton("Jump"))
         {
@@ -73,6 +76,14 @@ public class PlayerMovement : NetworkBehaviour
         {
             currentUseable.Use();
             return;
+        }
+    }
+
+    void Attack()
+    {
+        if (Input.GetButtonDown("Fire1") && isLocalPlayer)
+        {
+            pc.Attack(fasing: cC.FacingRight ? 1 : -1);
         }
     }
 
