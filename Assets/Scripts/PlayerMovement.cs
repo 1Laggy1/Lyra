@@ -1,15 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Mirror;
 using UnityEngine;
 
 public class PlayerMovement : NetworkBehaviour
 {
     CharacterController2D cC;
+    [SerializeField]
+    PlayerCombat pc;
+    private float horizontalMoveMax;
     float horizontalMove;
 
     [SerializeField]
-    float runSpeed;
+    float maxSpeed;
+    [SerializeField]
+    float speed;
     bool crouch;
     bool jump;
 
@@ -27,13 +34,22 @@ public class PlayerMovement : NetworkBehaviour
         {
             cC.enabled = false;
         }
+
+        pc.EntityDamaged += PlayerDamaged;
+    }
+
+    void PlayerDamaged(object sender, EventArgs eventArgs)
+    {
+        //StartCoroutine(PlayerDamagedE());
     }
 
     // Update is called once per frame
     void Update()
     {
         Use();
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        Attack();
+        horizontalMoveMax = Input.GetAxisRaw("Horizontal") * maxSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         if (Input.GetButton("Jump"))
         {
             // Gradually increase the jump input value up to maxJumpInput
@@ -49,7 +65,6 @@ public class PlayerMovement : NetworkBehaviour
         }
 
         // Debug or use the jump input value to control jumping force
-        Debug.Log("Current Jump Input: " + currentJumpInput);
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
@@ -62,8 +77,7 @@ public class PlayerMovement : NetworkBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(Input.GetAxisRaw("Jump"));
-        cC.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, currentJumpInput);
+        cC.Move(horizontalMove * Time.fixedDeltaTime, horizontalMoveMax * Time.fixedDeltaTime, crouch, jump, currentJumpInput);
         jump = false;
     }
 
@@ -73,6 +87,14 @@ public class PlayerMovement : NetworkBehaviour
         {
             currentUseable.Use();
             return;
+        }
+    }
+
+    void Attack()
+    {
+        if (Input.GetButtonDown("Fire1") && isLocalPlayer)
+        {
+            pc.Attack(fasing: cC.FacingRight ? 1 : -1);
         }
     }
 

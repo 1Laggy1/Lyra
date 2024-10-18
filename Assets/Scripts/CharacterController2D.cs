@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using Org.BouncyCastle.Crypto.Digests;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,7 +19,7 @@ public class CharacterController2D : MonoBehaviour
     private bool grounded;            // Whether or not the player is grounded.
     const float KCeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
     private new Rigidbody2D rigidbody2D;
-    private bool facingRight = true;  // For determining which way the player is currently facing.
+    public bool FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 velocity = Vector3.zero;
     public float MaxJumpHeight = 10f; // Maximum height the player can reach
     public float JumpSpeed = 2f;      // How fast the player ascends
@@ -36,6 +39,8 @@ public class CharacterController2D : MonoBehaviour
 
     public BoolEvent OnCrouchEvent;
     private bool wasCrouching = false;
+
+    public event EventHandler FacingChanged;
 
     private void Awake()
     {
@@ -67,7 +72,7 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    public void Move(float move, bool crouch, bool jump, float jumpForce)
+    public void Move(float move, float moveMax, bool crouch, bool jump, float jumpForce)
     {
         // If crouching, check to see if the character can stand up
         if (!crouch)
@@ -116,20 +121,34 @@ public class CharacterController2D : MonoBehaviour
             }
 
             // Move the character by finding the target velocity
-            Vector3 targetVelocity = new Vector2(move * 10f, rigidbody2D.velocity.y);
+            Vector2 targetVelocity = new Vector2(moveMax * 10, rigidbody2D.velocity.y);
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                if (rigidbody2D.velocity.x < targetVelocity.x)
+                {
 
-            // And then smoothing it out and applying it to the character
-            rigidbody2D.velocity = Vector3.SmoothDamp(rigidbody2D.velocity, targetVelocity, ref velocity, movementSmoothing);
+                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x + move, rigidbody2D.velocity.y);
+                }
+            }
+            else
+            {
+                if (rigidbody2D.velocity.x > targetVelocity.x)
+                {
+
+                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x + move, rigidbody2D.velocity.y);
+                }
+            }
+
 
             // If the input is moving the player right and the player is facing left...
-            if (move > 0 && !facingRight)
+            if (move > 0 && !FacingRight)
             {
                 // ... flip the player.
                 Flip();
             }
 
             // Otherwise if the input is moving the player left and the player is facing right...
-            else if (move < 0 && facingRight)
+            else if (move < 0 && FacingRight)
             {
                 // ... flip the player.
                 Flip();
@@ -188,7 +207,8 @@ public class CharacterController2D : MonoBehaviour
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
-        facingRight = !facingRight;
+        FacingRight = !FacingRight;
+        FacingChanged?.Invoke(this, EventArgs.Empty);
 
         // Multiply the player's x local scale by -1.
         Vector3 theScale = transform.localScale;
