@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 1250078648766666988}
   m_Layer: 0
   m_Name: Kayden
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,14 +138,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00bda9f9686aff489bfaa9b94ef8401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   Health: 100
-  Knockback: 1
+  Knockback: 7
   DamageF: 1
   Rb: {fileID: 5175866394231727951}
   IsAlive: 1
+  AttackSpeed: 0
+  TimeSinceAttack: 0
   pcr: {fileID: 5689636205123270567}
-  attackSpeed: 0.3
-  timeSinceAttack: 0
 --- !u!114 &7864202742016356288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +165,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   pc: {fileID: 5384660278071249350}
-  runSpeed: 77
+  maxSpeed: 77
+  speed: 77
   MaxJumpInput: 1
   JumpInputSpeed: 2
 --- !u!114 &8346771151398781471
@@ -260,7 +264,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 7
-  m_Material: {fileID: 6200000, guid: d7a5b4ab74f41d04aa90229f6eb71efd, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

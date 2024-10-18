@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Org.BouncyCastle.Crypto.Digests;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -70,7 +72,7 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    public void Move(float move, bool crouch, bool jump, float jumpForce)
+    public void Move(float move, float moveMax, bool crouch, bool jump, float jumpForce)
     {
         // If crouching, check to see if the character can stand up
         if (!crouch)
@@ -119,10 +121,24 @@ public class CharacterController2D : MonoBehaviour
             }
 
             // Move the character by finding the target velocity
-            Vector3 targetVelocity = new Vector2(move * 10f, rigidbody2D.velocity.y);
+            Vector2 targetVelocity = new Vector2(moveMax * 10, rigidbody2D.velocity.y);
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                if (rigidbody2D.velocity.x < targetVelocity.x)
+                {
 
-            // And then smoothing it out and applying it to the character
-            rigidbody2D.velocity = Vector3.SmoothDamp(rigidbody2D.velocity, targetVelocity, ref velocity, movementSmoothing);
+                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x + move, rigidbody2D.velocity.y);
+                }
+            }
+            else
+            {
+                if (rigidbody2D.velocity.x > targetVelocity.x)
+                {
+
+                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x + move, rigidbody2D.velocity.y);
+                }
+            }
+
 
             // If the input is moving the player right and the player is facing left...
             if (move > 0 && !FacingRight)
@@ -190,7 +206,6 @@ public class CharacterController2D : MonoBehaviour
 
     private void Flip()
     {
-
         // Switch the way the player is labelled as facing.
         FacingRight = !FacingRight;
         FacingChanged?.Invoke(this, EventArgs.Empty);

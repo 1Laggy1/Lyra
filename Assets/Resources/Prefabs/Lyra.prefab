@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 5233222097775398489}
   m_Layer: 0
   m_Name: Lyra
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,13 +200,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00bda9f9686aff489bfaa9b94ef8401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   Health: 100
-  Knockback: 3
+  Knockback: 5
   DamageF: 0
   Rb: {fileID: 512048831873334633}
   IsAlive: 1
+  AttackSpeed: 0
+  TimeSinceAttack: 0
   pcr: {fileID: 2723203892880086884}
-  attackSpeed: 5
 --- !u!114 &2927864328543756586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +227,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   pc: {fileID: 1493890513875584720}
-  runSpeed: 50
+  maxSpeed: 55
+  speed: 55
   MaxJumpInput: 1
   JumpInputSpeed: 2
 --- !u!114 &5783039994807129420
@@ -321,7 +326,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 7
-  m_Material: {fileID: 6200000, guid: d7a5b4ab74f41d04aa90229f6eb71efd, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

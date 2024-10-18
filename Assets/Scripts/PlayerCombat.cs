@@ -7,11 +7,6 @@ public class PlayerCombat : Entity
 {
     [SerializeField]
     PlayerCombatRange pcr;
-    [SerializeField]
-    float attackSpeed;
-
-    [SerializeField]
-    float timeSinceAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -19,18 +14,11 @@ public class PlayerCombat : Entity
         return;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timeSinceAttack += Time.deltaTime;
-        return;
-    }
-
     public override void Attack(int fasing)
     {
-        if (pcr.EnemysInRange.Count() != 0 && timeSinceAttack > attackSpeed)
+        if (pcr.EnemysInRange.Count() != 0 && TimeSinceAttack > AttackSpeed)
         {
-            timeSinceAttack = 0;
+            TimeSinceAttack = 0;
             List<Enemy> enemies = new List<Enemy>();
             foreach (Enemy e in pcr.EnemysInRange)
             {
@@ -42,5 +30,18 @@ public class PlayerCombat : Entity
                 e.Damage(DamageF, fasing);
             }
         }
+    }
+
+    public void OnCollisionStay2D(Collision2D other)
+    {
+        if (isLocalPlayer)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                other.gameObject.GetComponent<Enemy>().AttackPlayer(this);
+
+            }
+        }
+
     }
 }
