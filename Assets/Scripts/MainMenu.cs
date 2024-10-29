@@ -9,12 +9,16 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject Main;
     public GameObject ServerType;
-    string key = "ServerType";
+    public GameObject ChooseTypeOfClient;
+    public GameObject ChooseCharacter;
+    string serverType = "ServerType";
+    string clientType = "ClientType";
+    string characterType = "CharacterType";
 
     public void Play()
     {
         Main.SetActive(false);
-        ServerType.SetActive(true);
+        ChooseTypeOfClient.SetActive(true);
     }
 
     public void Exit()
@@ -22,13 +26,63 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    void UseIp()
+    public void UseIp()
     {
-        PlayerPrefs.SetString(key, "IP");
+        PlayerPrefs.SetString(serverType, "IP");
+        ServerType.SetActive(false);
+        ChooseCharacter.SetActive(true);
+
     }
 
-    void UseSteam()
+    public void UseSteam()
     {
-        PlayerPrefs.SetString(key, "Steam");
+        PlayerPrefs.SetString(serverType, "Steam");
+        ServerType.SetActive(false);
+        ChooseCharacter.SetActive(true);
     }
+
+    public void Host()
+    {
+        PlayerPrefs.SetString(clientType, "Host");
+        ChooseTypeOfClient.SetActive(false);
+        ServerType.SetActive(true);
+
+    }
+
+    public void Client()
+    {
+        PlayerPrefs.SetString(clientType, "Client");
+        SceneManager.LoadScene(1);
+    }
+
+    public void BackToMain()
+    {
+        Main.SetActive(true);
+        ChooseTypeOfClient.SetActive(false);
+    }
+
+    public void BackToServerType()
+    {
+        ServerType.SetActive(false);
+        ChooseTypeOfClient.SetActive(true);
+    }
+
+    public void BackToChooseServerType()
+    {
+        ChooseCharacter.SetActive(false);
+        ServerType.SetActive(true);
+    }
+
+    public void ChooseLyra()
+    {
+        PlayerPrefs.SetString(characterType, "Lyra");
+        SceneManager.LoadScene(1);
+    }
+
+    public void ChooseKayden()
+    {
+        PlayerPrefs.SetString(characterType, "Kayden");
+        SceneManager.LoadScene(1);
+    }
+
 }

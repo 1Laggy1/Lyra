@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lyra_0: 3839084011602235351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
