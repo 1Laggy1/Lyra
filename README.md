@@ -8,12 +8,17 @@ We expect to made multiplayer using mirror and steam frameworks. Also planning t
 
 # Lab3
 
+![ER](Media/ER.png)
+
+
+![ComponentsDiagram](Media/Component.png)
+
 ![steam1](Media/steam.png)
 ![steam2](Media/steam2.png)
 
 ![ipAddress](Media/ipaddress.png)
 
-![ER](Media/ER.png)
+
 
 # Story
 
