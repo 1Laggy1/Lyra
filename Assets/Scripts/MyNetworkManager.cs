@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MyNetworkManager : NetworkManager
 {
@@ -13,44 +15,56 @@ public class MyNetworkManager : NetworkManager
     [SerializeField]
     GameObject lyraPref;
 
+    public async void StartManager()
+    {
+        if (!NetworkManagerConfig.IsClient)
+        {
+            StartHost();
+        }
+
+        switch (NetworkManagerConfig.Transport)
+        {
+            case "IP":
+                break;
+            case "Steam":
+                break;
+        }
+
+        StartClient();
+        this.networkAddress = string.IsNullOrEmpty(NetworkManagerConfig.IP) ? "127.0.0.1" : NetworkManagerConfig.IP;
+    }
+
+    public override void Start()
+    {
+        base.Start();
+        if (GameObject.Find("NetworkManagers (1)") != null)
+        {
+            Destroy(GameObject.Find("NetworkManagers (1)"));
+        }
+    }
+
     public override void OnStartServer()
     {
         base.OnStartServer();
-
+        ServerChangeScene("AndrewScene"); // Використовуємо ServerChangeScene для зміни сцени на сервері
         NetworkServer.RegisterHandler<ConnectMessage>(OnCreateCharacter);
-    }
-
-    public override void OnServerConnect(NetworkConnectionToClient conn)
-    {
-        base.OnServerConnect(conn);
     }
 
     public override void OnClientConnect()
     {
         base.OnClientConnect();
 
-        // you can send the message here, or wherever else you want
-        ConnectMessage characterMessage = default(ConnectMessage);
-        characterMessage.Message = PlayerPrefs.GetString("Character");
-
+        // Надсилаємо вибір персонажа після підключення
+        ConnectMessage characterMessage = new ConnectMessage
+        {
+            Message = PlayerPrefs.GetString("Character")
+        };
         NetworkClient.Send(characterMessage);
     }
 
     void OnCreateCharacter(NetworkConnectionToClient conn, ConnectMessage message)
     {
-        // playerPrefab is the one assigned in the inspector in Network
-        // Manager but you can use different prefabs per race for example
-        GameObject gameobject;
-        if (message.Message == "Kayden")
-        {
-            gameobject = Instantiate(kaydenPref);
-        }
-        else
-        {
-            gameobject = Instantiate(lyraPref);
-        }
-
-        // call this to use this gameobject as the primary controller
+        GameObject gameobject = (message.Message == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
         NetworkServer.AddPlayerForConnection(conn, gameobject);
     }
 }
