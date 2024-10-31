@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Mono.CecilX.Cil;
+using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,10 +12,20 @@ public class MainMenu : MonoBehaviour
     public GameObject ServerType;
     public GameObject ChooseTypeOfClient;
     public GameObject ChooseCharacter;
-    string serverType = "ServerType";
-    string clientType = "ClientType";
-    string characterType = "CharacterType";
-
+    [SerializeField]
+    TMP_Text ip_Text;
+    GameObject networkManagerGO;
+    MyNetworkManager networkManager;
+    const string ServerTypeValue = "ServerType";
+    const string ClientType = "ClientType";
+    const string CharacterType = "CharacterType";
+    string serverType;
+    string clientType;
+    void Start()
+    {
+        networkManagerGO = GameObject.Find("NetworkManagers");
+        networkManager = networkManagerGO.GetComponent<MyNetworkManager>();
+    }
     public void Play()
     {
         Main.SetActive(false);
@@ -28,31 +39,37 @@ public class MainMenu : MonoBehaviour
 
     public void UseIp()
     {
-        PlayerPrefs.SetString(serverType, "IP");
+        NetworkManagerConfig.Transport = "IP";
+        PlayerPrefs.SetString(ServerTypeValue, "IP");
         ServerType.SetActive(false);
         ChooseCharacter.SetActive(true);
-
     }
 
     public void UseSteam()
     {
-        PlayerPrefs.SetString(serverType, "Steam");
+        NetworkManagerConfig.Transport = "Steam";
+        PlayerPrefs.SetString(ServerTypeValue, "Steam");
         ServerType.SetActive(false);
         ChooseCharacter.SetActive(true);
     }
 
     public void Host()
     {
-        PlayerPrefs.SetString(clientType, "Host");
+        NetworkManagerConfig.IsClient = false;
+        PlayerPrefs.SetString(ClientType, "Host");
+        clientType = "Host";
         ChooseTypeOfClient.SetActive(false);
         ServerType.SetActive(true);
-
     }
 
     public void Client()
     {
-        PlayerPrefs.SetString(clientType, "Client");
-        SceneManager.LoadScene(1);
+        NetworkManagerConfig.IsClient = true;
+        PlayerPrefs.SetString(ClientType, "Client");
+        clientType = "Client";
+        ChooseTypeOfClient.SetActive(false);
+        ServerType.SetActive(true);
+
     }
 
     public void BackToMain()
@@ -75,14 +92,15 @@ public class MainMenu : MonoBehaviour
 
     public void ChooseLyra()
     {
-        PlayerPrefs.SetString(characterType, "Lyra");
-        SceneManager.LoadScene(1);
+        PlayerPrefs.SetString(CharacterType, "Lyra");
+        NetworkManagerConfig.IP = ip_Text.text;
+        networkManager.StartManager();
     }
 
     public void ChooseKayden()
     {
-        PlayerPrefs.SetString(characterType, "Kayden");
-        SceneManager.LoadScene(1);
+        PlayerPrefs.SetString(CharacterType, "Kayden");
+        NetworkManagerConfig.IP = ip_Text.text;
+        networkManager.StartManager();
     }
-
 }

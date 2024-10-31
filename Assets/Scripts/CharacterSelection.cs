@@ -24,6 +24,3 @@ public class CharacterSelection : MonoBehaviour
         return characterName;
     }
 }
-
-
-
