@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using kcp2k;
 using Mirror;
+using Mirror.FizzySteam;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,24 +16,32 @@ public class MyNetworkManager : NetworkManager
 
     [SerializeField]
     GameObject lyraPref;
+    [SerializeField]
+    SteamLobby steamLobby;
 
     public async void StartManager()
     {
-        if (!NetworkManagerConfig.IsClient)
-        {
-            StartHost();
-        }
-
         switch (NetworkManagerConfig.Transport)
         {
             case "IP":
+                //transport = GetComponent<KcpTransport>();
+                if (!NetworkManagerConfig.IsClient)
+                {
+                    StartHost();
+                }
+                else
+                {
+                    StartClient();
+                    this.networkAddress = string.IsNullOrEmpty(NetworkManagerConfig.IP) ? "127.0.0.1" : NetworkManagerConfig.IP;
+                }
+
                 break;
             case "Steam":
+                //this.transport = gameObject.GetComponent<FizzySteamworks>();
+                steamLobby = GameObject.Find("SteamLobby").GetComponent<SteamLobby>();
+                steamLobby.HostLobby();
                 break;
         }
-
-        StartClient();
-        this.networkAddress = string.IsNullOrEmpty(NetworkManagerConfig.IP) ? "127.0.0.1" : NetworkManagerConfig.IP;
     }
 
     public override void Start()
@@ -41,6 +51,7 @@ public class MyNetworkManager : NetworkManager
         {
             Destroy(GameObject.Find("NetworkManagers (1)"));
         }
+        steamLobby = GameObject.Find("SteamLobby").GetComponent<SteamLobby>();
     }
 
     public override void OnStartServer()
@@ -57,7 +68,7 @@ public class MyNetworkManager : NetworkManager
         // Надсилаємо вибір персонажа після підключення
         ConnectMessage characterMessage = new ConnectMessage
         {
-            Message = PlayerPrefs.GetString("Character")
+            Message = PlayerPrefs.GetString("CharacterType")
         };
         NetworkClient.Send(characterMessage);
     }

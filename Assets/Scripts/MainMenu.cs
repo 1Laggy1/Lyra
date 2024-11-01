@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Mono.CecilX.Cil;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class MainMenu : MonoBehaviour
 {
@@ -21,10 +17,12 @@ public class MainMenu : MonoBehaviour
     const string CharacterType = "CharacterType";
     string serverType;
     string clientType;
+    [SerializeField]
+    GameObject networkManagerKCPPrefab;
+    [SerializeField]
+    GameObject networkManagerSteamPrefab;
     void Start()
     {
-        networkManagerGO = GameObject.Find("NetworkManagers");
-        networkManager = networkManagerGO.GetComponent<MyNetworkManager>();
     }
     public void Play()
     {
@@ -94,6 +92,15 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetString(CharacterType, "Lyra");
         NetworkManagerConfig.IP = ip_Text.text;
+        if (NetworkManagerConfig.Transport == "IP")
+        {
+            networkManager = Instantiate(networkManagerKCPPrefab).GetComponent<MyNetworkManager>();
+        }
+        else
+        {
+            networkManager = Instantiate(networkManagerSteamPrefab).GetComponent<MyNetworkManager>();
+        }
+
         networkManager.StartManager();
     }
 
@@ -101,6 +108,14 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetString(CharacterType, "Kayden");
         NetworkManagerConfig.IP = ip_Text.text;
+        if (NetworkManagerConfig.Transport == "IP")
+        {
+            networkManager = Instantiate(networkManagerKCPPrefab).GetComponent<MyNetworkManager>();
+        }
+        else
+        {
+            networkManager = Instantiate(networkManagerSteamPrefab).GetComponent<MyNetworkManager>();
+        }
         networkManager.StartManager();
     }
 }
