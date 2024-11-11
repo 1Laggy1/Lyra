@@ -10,8 +10,10 @@ public class PlayerMovement : NetworkBehaviour
     CharacterController2D cC;
     [SerializeField]
     PlayerCombat pc;
-    private float horizontalMoveMax;
-    float horizontalMove;
+
+    private IInputProvider inputProvider = new InputProvider();
+    public float horizontalMoveMax;
+    public float horizontalMove;
 
     [SerializeField]
     float maxSpeed;
@@ -25,6 +27,11 @@ public class PlayerMovement : NetworkBehaviour
     private float currentJumpInput = 0f;
 
     private IUseable currentUseable;
+
+    public void SetInputProvider(IInputProvider provider)
+    {
+        inputProvider = provider;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +55,8 @@ public class PlayerMovement : NetworkBehaviour
     {
         Use();
         Attack();
-        horizontalMoveMax = Input.GetAxisRaw("Horizontal") * maxSpeed;
-        horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
+        horizontalMoveMax = inputProvider.GetHorizontal() * maxSpeed;
+        horizontalMove = inputProvider.GetHorizontal() * speed;
         if (Input.GetButton("Jump"))
         {
             // Gradually increase the jump input value up to maxJumpInput

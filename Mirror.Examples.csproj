@@ -128,8 +128,8 @@
     <Compile Include="Assets\Mirror\Examples\RigidbodyBenchmark\Scripts\RigidbodyBenchmarkNetworkManager.cs" />
     <Compile Include="Assets\Mirror\Examples\BenchmarkStinkySteak\Dependencies\netcode-benchmarker-util\Runtime\Scripts\BehaviourConfig.cs" />
     <Compile Include="Assets\Mirror\Examples\BenchmarkStinkySteak\Dependencies\netcode-benchmarker-util\Runtime\Scripts\BehaviourWrapper\SinMoveYWrapper.cs" />
-    <Compile Include="Assets\Mirror\Examples\CCU\Player.cs" />
     <Compile Include="Assets\Mirror\Examples\_Common\Scripts\PlayerCamera.cs" />
+    <Compile Include="Assets\Mirror\Examples\CCU\Player.cs" />
     <Compile Include="Assets\Mirror\Examples\TankTheftAuto\Scripts\TankController.cs" />
     <Compile Include="Assets\Mirror\Examples\Chat\Scripts\LoginUI.cs" />
     <Compile Include="Assets\Mirror\Examples\CharacterSelection\Scripts\CanvasReferencer.cs" />

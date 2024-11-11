@@ -18,6 +18,7 @@ public class MyNetworkManager : NetworkManager
     GameObject lyraPref;
     [SerializeField]
     SteamLobby steamLobby;
+    bool firstClient = true;
 
     public async void StartManager()
     {
@@ -52,13 +53,14 @@ public class MyNetworkManager : NetworkManager
             Destroy(GameObject.Find("NetworkManagers (1)"));
         }
         steamLobby = GameObject.Find("SteamLobby").GetComponent<SteamLobby>();
+        NetworkServer.RegisterHandler<ConnectMessage>(OnCreateCharacter);
     }
 
     public override void OnStartServer()
     {
         base.OnStartServer();
         ServerChangeScene("AndrewScene"); // Використовуємо ServerChangeScene для зміни сцени на сервері
-        NetworkServer.RegisterHandler<ConnectMessage>(OnCreateCharacter);
+
     }
 
     public override void OnClientConnect()
@@ -68,14 +70,28 @@ public class MyNetworkManager : NetworkManager
         // Надсилаємо вибір персонажа після підключення
         ConnectMessage characterMessage = new ConnectMessage
         {
-            Message = PlayerPrefs.GetString("CharacterType")
+            Message = NetworkManagerConfig.Character
         };
-        NetworkClient.Send(characterMessage);
-    }
+        if (firstClient)
+        {
+            StartCoroutine(SpawnHostPlayer());
+        }
+        else
+        {
+            NetworkClient.Send(characterMessage);
+        }
 
+        firstClient = false;
+    }
     void OnCreateCharacter(NetworkConnectionToClient conn, ConnectMessage message)
     {
         GameObject gameobject = (message.Message == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
         NetworkServer.AddPlayerForConnection(conn, gameobject);
+    }
+    IEnumerator SpawnHostPlayer()
+    {
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewScene");
+        GameObject gameobject = (NetworkManagerConfig.Character == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
+        NetworkServer.AddPlayerForConnection(NetworkServer.connections[0], gameobject);
     }
 }
