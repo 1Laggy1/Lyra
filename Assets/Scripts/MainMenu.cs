@@ -17,10 +17,8 @@ public class MainMenu : MonoBehaviour
     const string CharacterType = "CharacterType";
     string serverType;
     string clientType;
-    [SerializeField]
-    GameObject networkManagerKCPPrefab;
-    [SerializeField]
-    GameObject networkManagerSteamPrefab;
+    public GameObject networkManagerKCPPrefab;
+    public GameObject networkManagerSteamPrefab;
     void Start()
     {
     }

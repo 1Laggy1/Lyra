@@ -122,7 +122,7 @@ public class CharacterController2D : MonoBehaviour
 
             // Move the character by finding the target velocity
             Vector2 targetVelocity = new Vector2(moveMax * 10, rigidbody2D.velocity.y);
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            if (moveMax > 0)
             {
                 if (rigidbody2D.velocity.x < targetVelocity.x)
                 {
