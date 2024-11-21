@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 
-
 public class MainMenu : MonoBehaviour
 {
     public GameObject Main;
@@ -19,9 +18,11 @@ public class MainMenu : MonoBehaviour
     string clientType;
     public GameObject networkManagerKCPPrefab;
     public GameObject networkManagerSteamPrefab;
+
     void Start()
     {
     }
+
     public void Play()
     {
         Main.SetActive(false);

@@ -64,6 +64,7 @@
     <Analyzer Include="C:\UnityEditors\2023.1.11f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\MockSteamInfo.cs" />
     <Compile Include="Assets\Scripts\MockInputProvider.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\ConnectMessage.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\IUseable.cs" />
+    <Compile Include="Assets\Scripts\SteamInfo.cs" />
     <Compile Include="Assets\Scripts\DoorVertical.cs" />
     <Compile Include="Assets\Scripts\PlayerCombatRange.cs" />
     <Compile Include="Assets\Scripts\InputProvider.cs" />
