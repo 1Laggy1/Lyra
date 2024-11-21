@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Tests\PlayMode\PlayerMovementTests.cs" />
+    <Compile Include="Assets\Tests\PlayMode\SteamInfoTest.cs" />
     <Compile Include="Assets\Tests\PlayMode\TestingTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -941,6 +942,10 @@
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">
