@@ -72,7 +72,7 @@ public class MyNetworkManager : NetworkManager
         {
             Message = NetworkManagerConfig.Character
         };
-        if (firstClient)
+        if (NetworkServer.active)
         {
             StartCoroutine(SpawnHostPlayer());
         }
@@ -93,5 +93,18 @@ public class MyNetworkManager : NetworkManager
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewScene");
         GameObject gameobject = (NetworkManagerConfig.Character == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
         NetworkServer.AddPlayerForConnection(NetworkServer.connections[0], gameobject);
+    }
+    public override void OnApplicationQuit()
+    {
+        try
+        {
+            StopClient();
+        }
+        catch { }
+        try
+        {
+            StopServer();
+        }
+        catch { }
     }
 }

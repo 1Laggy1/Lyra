@@ -55,6 +55,7 @@ public class PlayerMovement : NetworkBehaviour
     {
         Use();
         Attack();
+        UseAbility();
         horizontalMoveMax = inputProvider.GetHorizontal() * maxSpeed;
         horizontalMove = inputProvider.GetHorizontal() * speed;
         if (Input.GetButton("Jump"))
@@ -102,6 +103,13 @@ public class PlayerMovement : NetworkBehaviour
         if (Input.GetButtonDown("Fire1") && isLocalPlayer)
         {
             pc.Attack(fasing: cC.FacingRight ? 1 : -1);
+        }
+    }
+    void UseAbility()
+    {
+        if (Input.GetButtonDown("Ability") && isLocalPlayer)
+        {
+            pc.UseAbility();
         }
     }
 

@@ -7,6 +7,8 @@ public class PlayerCombat : Entity
 {
     [SerializeField]
     PlayerCombatRange pcr;
+    [SerializeField]
+    PlayerAbility playerAbility;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,10 @@ public class PlayerCombat : Entity
                 e.Damage(DamageF, fasing);
             }
         }
+    }
+    public void UseAbility()
+    {
+        playerAbility.UseAbility();
     }
 
     public void OnCollisionStay2D(Collision2D other)
