@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2123278853059786838}
   - component: {fileID: 7950076661935152266}
+  - component: {fileID: 3098232515893538559}
   - component: {fileID: 5384660278071249350}
   - component: {fileID: 7864202742016356288}
   - component: {fileID: 8346771151398781471}
@@ -126,6 +127,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3098232515893538559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637177920481676454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7f1fb8dc4b106439ffd74eef8832c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  dashForce: 30
+  dashDistance: 88.87
+  dashDuration: 0.1
+  canDash: 1
+  dashingCooldown: 0.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  playerMovement: {fileID: 8346771151398781471}
 --- !u!114 &5384660278071249350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +174,7 @@ MonoBehaviour:
   AttackSpeed: 0
   TimeSinceAttack: 0
   pcr: {fileID: 5689636205123270567}
+  playerAbility: {fileID: 3098232515893538559}
 --- !u!114 &7864202742016356288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +191,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   pc: {fileID: 5384660278071249350}
+  horizontalMoveMax: 0
+  horizontalMove: 0
   maxSpeed: 77
   speed: 77
   MaxJumpInput: 1

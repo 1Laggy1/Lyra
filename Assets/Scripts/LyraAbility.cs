@@ -11,14 +11,15 @@ public class LyraAbility : PlayerAbility
     GameObject lyraCursorGO;
     GameObject currentLyraCursorGO;
     LyraCursor lyraCursor;
+
     public void Start()
     {
         if (!isLocalPlayer)
         {
             return;
         }
-
     }
+
     public override void UseAbility()
     {
         if (!isLocalPlayer)
@@ -38,6 +39,7 @@ public class LyraAbility : PlayerAbility
             StopAbility();
         }
     }
+
     [Command(requiresAuthority = false)]
     public void SpawnCursorOnServer()
     {
@@ -48,6 +50,7 @@ public class LyraAbility : PlayerAbility
             SpawnCursorOnLocal(currentLyraCursorGO);
         }
     }
+
     [ClientRpc]
     public void SpawnCursorOnLocal(GameObject spawnedCursor)
     {
@@ -55,12 +58,11 @@ public class LyraAbility : PlayerAbility
         {
             return;
         }
+    
         currentLyraCursorGO = spawnedCursor;
         lyraCursor = currentLyraCursorGO.GetComponent<LyraCursor>();
         StartAbility();
     }
-
-    // Почати здібність
 
     private void StartAbility()
     {
@@ -69,10 +71,8 @@ public class LyraAbility : PlayerAbility
         lyraCursor.OnStartAbility();
     }
 
-    // Зупинити здібність
     private void StopAbility()
     {
-        // Видалити курсор
         if (currentLyraCursorGO.activeInHierarchy)
         {
             abilityStarted = false;
@@ -80,11 +80,12 @@ public class LyraAbility : PlayerAbility
             currentLyraCursorGO.SetActive(false);
         }
     }
+
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && abilityStarted && lyraCursor.lyraAbilityItem != null)
+        if (Input.GetButtonDown("Fire1") && abilityStarted && lyraCursor.LyraAbilityItem != null)
         {
-            lyraCursor.lyraAbilityItem.UseAbility();
+            lyraCursor.LyraAbilityItem.UseAbility();
         }
     }
 }

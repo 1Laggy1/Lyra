@@ -83,11 +83,13 @@ public class MyNetworkManager : NetworkManager
 
         firstClient = false;
     }
+
     void OnCreateCharacter(NetworkConnectionToClient conn, ConnectMessage message)
     {
         GameObject gameobject = (message.Message == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
         NetworkServer.AddPlayerForConnection(conn, gameobject);
     }
+
     IEnumerator SpawnHostPlayer()
     {
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewScene");

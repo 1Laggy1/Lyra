@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\MockSteamInfo.cs" />
     <Compile Include="Assets\Scripts\MockInputProvider.cs" />
+    <Compile Include="Assets\Scripts\KaydenAbility.cs" />
     <Compile Include="Assets\Scripts\PlayerAbility.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\ConnectMessage.cs" />

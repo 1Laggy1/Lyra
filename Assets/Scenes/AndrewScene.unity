@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: sceneId
       value: 1799675738
       objectReference: {fileID: 0}
+    - target: {fileID: 5111249003554737864, guid: cb38bac6b4005484e8e8e138b5492c81, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7146650332724085141, guid: cb38bac6b4005484e8e8e138b5492c81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.9357305
@@ -485,6 +489,10 @@ PrefabInstance:
     - target: {fileID: 8725606294288711976, guid: cb38bac6b4005484e8e8e138b5492c81, type: 3}
       propertyPath: m_Name
       value: DoorVertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725606294288711976, guid: cb38bac6b4005484e8e8e138b5492c81, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -778,7 +786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 872191154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1147,6 +1155,10 @@ PrefabInstance:
       propertyPath: sceneId
       value: 2555186174
       objectReference: {fileID: 0}
+    - target: {fileID: 5111249003554737864, guid: cb38bac6b4005484e8e8e138b5492c81, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7146650332724085141, guid: cb38bac6b4005484e8e8e138b5492c81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.0242696
@@ -1190,6 +1202,10 @@ PrefabInstance:
     - target: {fileID: 8725606294288711976, guid: cb38bac6b4005484e8e8e138b5492c81, type: 3}
       propertyPath: m_Name
       value: DoorVertical (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725606294288711976, guid: cb38bac6b4005484e8e8e138b5492c81, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
