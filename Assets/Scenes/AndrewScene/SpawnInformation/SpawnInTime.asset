@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd79699b90399544ace1a5c60b3de0e, type: 3}
   m_Name: SpawnInTime
   m_EditorClassIdentifier: 
+  Haos: 0
   WhatToSpawn:
-  - amount: 1
-    time: 5
+  - Amount: 1
+    Time: 0
     Spawnpoint: {x: 0, y: 3}
-    go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
-  - amount: 1
-    time: 5
+    Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
+  - Amount: 1
+    Time: 5
     Spawnpoint: {x: 0, y: 3}
-    go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
-  - amount: 1
-    time: 5
+    Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
+  - Amount: 2
+    Time: 0
     Spawnpoint: {x: 0, y: 3}
-    go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
+    Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}

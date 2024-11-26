@@ -876,7 +876,6 @@ Transform:
   - {fileID: 1643845570}
   - {fileID: 1953334034}
   - {fileID: 848004618}
-  - {fileID: 1008012350}
   - {fileID: 840641871}
   - {fileID: 1450155177}
   m_Father: {fileID: 0}

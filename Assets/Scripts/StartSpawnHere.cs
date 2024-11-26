@@ -11,7 +11,9 @@ public class StartSpawnHere : NetworkBehaviour
     SpawnInTime spawnInTime;
     SpawnManager sm;
     bool isSpawning;
-
+    [SerializeField]
+    bool loop;
+    bool firstSpawn = true;
 
     int spawnedGos = 0;
     void Start()
@@ -26,8 +28,9 @@ public class StartSpawnHere : NetworkBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (isServer && other.gameObject.tag == "Player" && !isSpawning)
+        if (isServer && other.gameObject.tag == "Player" && !isSpawning && (loop || firstSpawn))
         {
+            firstSpawn = false;
             isSpawning = true;
             StartCoroutine(Spawning());
 

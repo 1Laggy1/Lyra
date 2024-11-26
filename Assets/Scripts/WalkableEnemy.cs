@@ -62,11 +62,11 @@ public class WalkableEnemy : Enemy
         }
         else if (Vector2.Distance(playersTransforms[0].position, transform.position) > Vector2.Distance(playersTransforms[1].position, transform.position))
         {
-            currentPlayer = playersTransforms[0];
+            currentPlayer = playersTransforms[1];
         }
         else
         {
-            currentPlayer = playersTransforms[1];
+            currentPlayer = playersTransforms[0];
         }
     }
 }

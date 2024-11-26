@@ -11,7 +11,6 @@ public class Enemy : Entity
         EntityDied += Died;
     }
 
-    [ClientRpc]
     void Died(object sender, EventArgs eventArgs)
     {
         Destroy(gameObject);
