@@ -1,4 +1,5 @@
 using System.Collections;
+using Mirror;
 using UnityEngine;
 
 public class KaydenAbility : PlayerAbility
@@ -11,6 +12,8 @@ public class KaydenAbility : PlayerAbility
 
     private Rigidbody2D rb;
     private bool isDashing = false;
+    [SerializeField]
+    TrailRenderer tr;
 
     void Start()
     {
@@ -20,9 +23,29 @@ public class KaydenAbility : PlayerAbility
     public override void UseAbility()
     {
         if (isDashing || !canDash) return;
+        DashEffectStart();
         StartCoroutine(DashMovement());
     }
-
+    [Command(requiresAuthority = false)]
+    public void DashEffectStart()
+    {
+        DashEffectStartClientRPC();
+    }
+    [Command(requiresAuthority = false)]
+    public void DashEffectStop()
+    {
+        DashEffectStopClientRPC();
+    }
+    [ClientRpc]
+    public void DashEffectStartClientRPC()
+    {
+        tr.emitting = true;
+    }
+    [ClientRpc]
+    public void DashEffectStopClientRPC()
+    {
+        tr.emitting = false;
+    }
     private IEnumerator DashMovement()
     {
         canDash = false;
@@ -42,6 +65,7 @@ public class KaydenAbility : PlayerAbility
         }
 
         yield return new WaitForSeconds(dashDuration);
+        DashEffectStop();
         rb.gravityScale = originalGravity;
         rb.velocity = new Vector2(originalXvelocity, rb.velocityY);
         isDashing = false;
