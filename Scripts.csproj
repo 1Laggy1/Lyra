@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\WalkableEnemy.cs" />
     <Compile Include="Assets\Scripts\LyraAbility.cs" />
     <Compile Include="Assets\Scripts\ConsoleToGUI.cs" />
+    <Compile Include="Assets\Scripts\SpawnInTime.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\IUseable.cs" />
@@ -91,7 +92,9 @@
     <Compile Include="Assets\Scripts\SteamLobby.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\WalkAI.cs" />
+    <Compile Include="Assets\Scripts\StartSpawnHere.cs" />
     <Compile Include="Assets\Scripts\MyNetworkManager.cs" />
+    <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\ICombat.cs" />
     <Compile Include="Assets\Scripts\IInputProvider.cs" />
     <Compile Include="Assets\Scripts\LyraCursor.cs" />
