@@ -218,7 +218,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   Health: 100
-  Knockback: 5
+  Knockback: 9
   DamageF: 0
   Rb: {fileID: 512048831873334633}
   IsAlive: 1

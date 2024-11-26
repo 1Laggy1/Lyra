@@ -6,12 +6,11 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    void Start()
+    public void Start()
     {
         EntityDied += Died;
     }
 
-    [ClientRpc]
     void Died(object sender, EventArgs eventArgs)
     {
         Destroy(gameObject);
@@ -28,10 +27,6 @@ public class Enemy : Entity
 
     public void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log("Collision with player " + gameObject.GetComponent<Entity>().isLocalPlayer);
-
-        }
+        
     }
 }

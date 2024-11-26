@@ -40,7 +40,7 @@ public class Entity : NetworkBehaviour
     public void DamageRPC(float damage, int fasing)
     {
         Health -= damage;
-        Rb.AddForce(new Vector2(Knockback * fasing * 10000, Knockback * 10000), ForceMode2D.Force);
+        Rb.AddForce(new Vector2(Knockback * fasing * 10000, Knockback * 3000), ForceMode2D.Force);
         if (Health <= 0)
         {
             EntityDied?.Invoke(this, EventArgs.Empty);
