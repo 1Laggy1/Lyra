@@ -103,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1848289942128424528}
   - component: {fileID: 6243236430120932741}
+  - component: {fileID: -3510463818860974345}
   - component: {fileID: 1493890513875584720}
   - component: {fileID: 2927864328543756586}
   - component: {fileID: 5783039994807129420}
@@ -188,6 +189,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3510463818860974345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244333039126102870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce597236f2014b0498b6b283b0249cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lyraCursorGO: {fileID: 6433703115905850068, guid: aaef3b339b1e50d478348acb8a64cc56, type: 3}
 --- !u!114 &1493890513875584720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +225,7 @@ MonoBehaviour:
   AttackSpeed: 0
   TimeSinceAttack: 0
   pcr: {fileID: 2723203892880086884}
+  playerAbility: {fileID: -3510463818860974345}
 --- !u!114 &2927864328543756586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +242,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   pc: {fileID: 1493890513875584720}
+  horizontalMoveMax: 0
+  horizontalMove: 0
   maxSpeed: 55
   speed: 55
   MaxJumpInput: 1

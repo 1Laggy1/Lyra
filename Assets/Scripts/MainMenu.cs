@@ -90,6 +90,7 @@ public class MainMenu : MonoBehaviour
     public void ChooseLyra()
     {
         PlayerPrefs.SetString(CharacterType, "Lyra");
+        NetworkManagerConfig.Character = "Lyra";
         NetworkManagerConfig.IP = ip_Text.text;
         if (NetworkManagerConfig.Transport == "IP")
         {
@@ -106,6 +107,7 @@ public class MainMenu : MonoBehaviour
     public void ChooseKayden()
     {
         PlayerPrefs.SetString(CharacterType, "Kayden");
+        NetworkManagerConfig.Character = "Kayden";
         NetworkManagerConfig.IP = ip_Text.text;
         if (NetworkManagerConfig.Transport == "IP")
         {
