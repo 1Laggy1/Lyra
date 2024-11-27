@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\NPCAI.cs" />
     <Compile Include="Assets\Scripts\MockSteamInfo.cs" />
     <Compile Include="Assets\Scripts\MockInputProvider.cs" />
+    <Compile Include="Assets\Scripts\LyraSpellType.cs" />
     <Compile Include="Assets\Scripts\KaydenAbility.cs" />
     <Compile Include="Assets\Scripts\PlayerAbility.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\PlayerCombatRange.cs" />
     <Compile Include="Assets\Scripts\InputProvider.cs" />
     <Compile Include="Assets\Scripts\Steamworks.NET\SteamManager.cs" />
+    <Compile Include="Assets\Scripts\LyraSpellsAudios.cs" />
     <Compile Include="Assets\Scripts\CharacterSelection.cs" />
     <Compile Include="Assets\Scripts\DoorLyraAbilityItem.cs" />
     <Compile Include="Assets\Scripts\NetworkManagerConfig.cs" />

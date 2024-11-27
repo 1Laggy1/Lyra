@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Data;
 using Mirror;
 using UnityEngine;
 
@@ -14,6 +16,10 @@ public class KaydenAbility : PlayerAbility
     private bool isDashing = false;
     [SerializeField]
     TrailRenderer tr;
+    [SerializeField]
+    List<AudioClip> useAudio = new List<AudioClip>();
+    [SerializeField]
+    AudioSource audioSource;
 
     void Start()
     {
@@ -29,7 +35,7 @@ public class KaydenAbility : PlayerAbility
     [Command(requiresAuthority = false)]
     public void DashEffectStart()
     {
-        DashEffectStartClientRPC();
+        DashEffectStartClientRPC(Random.Range(0, useAudio.Count));
     }
     [Command(requiresAuthority = false)]
     public void DashEffectStop()
@@ -37,9 +43,10 @@ public class KaydenAbility : PlayerAbility
         DashEffectStopClientRPC();
     }
     [ClientRpc]
-    public void DashEffectStartClientRPC()
+    public void DashEffectStartClientRPC(int audioIndex)
     {
         tr.emitting = true;
+        audioSource.PlayOneShot(useAudio[audioIndex]);
     }
     [ClientRpc]
     public void DashEffectStopClientRPC()

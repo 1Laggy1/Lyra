@@ -41,7 +41,6 @@ public class CharacterController2D : MonoBehaviour
     private bool wasCrouching = false;
 
     public event EventHandler FacingChanged;
-
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -126,7 +125,6 @@ public class CharacterController2D : MonoBehaviour
             {
                 if (rigidbody2D.velocity.x < targetVelocity.x)
                 {
-
                     rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x + move, rigidbody2D.velocity.y);
                 }
             }
@@ -134,7 +132,6 @@ public class CharacterController2D : MonoBehaviour
             {
                 if (rigidbody2D.velocity.x > targetVelocity.x)
                 {
-
                     rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x + move, rigidbody2D.velocity.y);
                 }
             }

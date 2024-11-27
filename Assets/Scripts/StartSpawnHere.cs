@@ -16,15 +16,19 @@ public class StartSpawnHere : NetworkBehaviour
     bool firstSpawn = true;
 
     int spawnedGos = 0;
+    [SerializeField]
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip enemiesSpawnAudio;
     void Start()
     {
         if (!isServer)
         {
-            this.enabled = false;
             return;
         }
         sm = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
     }
+
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,11 +40,14 @@ public class StartSpawnHere : NetworkBehaviour
 
         }
     }
+
+
     IEnumerator Spawning()
     {
         foreach (SpawnOneAttack soa in spawnInTime.WhatToSpawn)
         {
             yield return new WaitForSeconds(soa.Time);
+            SpawnAudio();
             foreach (AttackInfo attackInfo in soa.attackInfos)
             {
                 for (int i = 1; i <= attackInfo.Amount; i++)
@@ -58,6 +65,16 @@ public class StartSpawnHere : NetworkBehaviour
         yield return null;
     }
 
+    [Command(requiresAuthority = false)]
+    public void SpawnAudio()
+    {
+        SpawnAudioClientRPC();
+    }
+    [ClientRpc]
+    public void SpawnAudioClientRPC()
+    {
+        audioSource.PlayOneShot(enemiesSpawnAudio);
+    }
     public void EnemyDies(object sender, EventArgs eventArgs)
     {
         spawnedGos--;
