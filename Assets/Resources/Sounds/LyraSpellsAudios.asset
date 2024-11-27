@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1bc74e8b23f1046be590a3c32d32e6, type: 3}
   m_Name: LyraSpellsAudios
   m_EditorClassIdentifier: 
-  EasySpells: []
-  MediumSpells: []
-  HeavySpells: []
+  EasySpells:
+  - {fileID: 8300000, guid: 03f8c8a4eb232cd4f820b29a77114783, type: 3}
+  - {fileID: 8300000, guid: 1d8dadf5d6d963e4eafd388297cbcf62, type: 3}
+  - {fileID: 8300000, guid: 45d64fb94bfc28747942295e3be1f580, type: 3}
+  - {fileID: 8300000, guid: ae977b30dea89234596d60694c0b1684, type: 3}
+  - {fileID: 8300000, guid: 2f2db01f22033dc4e822b8608ebe0568, type: 3}
+  - {fileID: 8300000, guid: c5a39c47de2e90e438339d36ceefd514, type: 3}
+  MediumSpells:
+  - {fileID: 8300000, guid: 8ebd08d9f4d09ad4d946745d7553003e, type: 3}
+  - {fileID: 8300000, guid: 59f80e5ed8c326e41bad8dfd5218c349, type: 3}
+  HeavySpells:
+  - {fileID: 8300000, guid: cc9ea64ff5d298f40ba9a3275b3ba3d9, type: 3}

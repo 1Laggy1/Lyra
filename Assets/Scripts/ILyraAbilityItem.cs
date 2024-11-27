@@ -36,6 +36,8 @@ public class ILyraAbilityItem : NetworkBehaviour
     [ClientRpc]
     public void StartAudioClientRPC(int audioIndex)
     {
+        if (PlayerPrefs.GetFloat("Volume_effects") != 0)
+            audioSource.volume = PlayerPrefs.GetFloat("Volume_effects");
         switch (lyraSpellType)
         {
             case LyraSpellType.Easy:

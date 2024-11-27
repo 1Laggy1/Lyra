@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\IUseable.cs" />
+    <Compile Include="Assets\Scripts\MainMenuMusic.cs" />
     <Compile Include="Assets\Scripts\SteamInfo.cs" />
     <Compile Include="Assets\Scripts\ILyraAbilityItem.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />

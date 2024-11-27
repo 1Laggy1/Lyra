@@ -45,6 +45,8 @@ public class KaydenAbility : PlayerAbility
     [ClientRpc]
     public void DashEffectStartClientRPC(int audioIndex)
     {
+         if (PlayerPrefs.GetFloat("Volume_effects") != 0)
+            audioSource.volume = PlayerPrefs.GetFloat("Volume_effects");
         tr.emitting = true;
         audioSource.PlayOneShot(useAudio[audioIndex]);
     }

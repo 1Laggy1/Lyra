@@ -73,6 +73,8 @@ public class StartSpawnHere : NetworkBehaviour
     [ClientRpc]
     public void SpawnAudioClientRPC()
     {
+        if (PlayerPrefs.GetFloat("Volume_effects") != 0)
+            audioSource.volume = PlayerPrefs.GetFloat("Volume_effects");
         audioSource.PlayOneShot(enemiesSpawnAudio);
     }
     public void EnemyDies(object sender, EventArgs eventArgs)
