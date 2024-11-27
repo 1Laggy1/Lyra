@@ -14,15 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Haos: 0
   WhatToSpawn:
-  - Amount: 1
-    Time: 0
-    Spawnpoint: {x: 0, y: 3}
-    Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
-  - Amount: 1
-    Time: 5
-    Spawnpoint: {x: 0, y: 3}
-    Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
-  - Amount: 2
-    Time: 0
-    Spawnpoint: {x: 0, y: 3}
-    Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
+  - Time: 0
+    attackInfos:
+    - Spawnpoint: {x: 0, y: 2}
+      Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
+      Amount: 1
+    - Spawnpoint: {x: -10, y: 2}
+      Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
+      Amount: 1
+  - Time: 5
+    attackInfos:
+    - Spawnpoint: {x: 0, y: 2}
+      Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
+      Amount: 1
+    - Spawnpoint: {x: 10, y: 2}
+      Go: {fileID: 2235235742213877974, guid: c244573926d20e742a26e9a69778c019, type: 3}
+      Amount: 2

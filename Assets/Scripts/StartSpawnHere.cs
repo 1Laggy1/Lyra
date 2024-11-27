@@ -38,15 +38,19 @@ public class StartSpawnHere : NetworkBehaviour
     }
     IEnumerator Spawning()
     {
-        foreach (FloatGameObjectPair fgop in spawnInTime.WhatToSpawn)
+        foreach (SpawnOneAttack soa in spawnInTime.WhatToSpawn)
         {
-            yield return new WaitForSeconds(fgop.Time);
-            for (int i = 1; i <= fgop.Amount; i++)
+            yield return new WaitForSeconds(soa.Time);
+            foreach (AttackInfo attackInfo in soa.attackInfos)
             {
-                GameObject go = sm.Spawn(fgop.Go, fgop.Spawnpoint);
-                spawnedGos++;
-                go.GetComponent<Entity>().EntityDied += EnemyDies;
+                for (int i = 1; i <= attackInfo.Amount; i++)
+                {
+                    GameObject go = sm.Spawn(attackInfo.Go, attackInfo.Spawnpoint);
+                    spawnedGos++;
+                    go.GetComponent<Entity>().EntityDied += EnemyDies;
+                }
             }
+
             if (!spawnInTime.Haos)
                 yield return new WaitUntil(() => spawnedGos == 0);
         }

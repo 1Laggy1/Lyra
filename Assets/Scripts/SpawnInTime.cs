@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class FloatGameObjectPair
+public class SpawnOneAttack
 {
-    public float Amount;
     public float Time;
+    public List<AttackInfo> attackInfos = new List<AttackInfo>();
+}
+
+[System.Serializable]
+public class AttackInfo
+{
     public Vector2 Spawnpoint;
     public GameObject Go;
+    public float Amount;
 }
 
 [CreateAssetMenu(fileName = "SpawnInTime", menuName = "Custom/SpawnInformation", order = 1)]
 public class SpawnInTime : ScriptableObject
 {
     public bool Haos;
-    public List<FloatGameObjectPair> WhatToSpawn = new List<FloatGameObjectPair>();
+    public List<SpawnOneAttack> WhatToSpawn = new List<SpawnOneAttack>();
 }
