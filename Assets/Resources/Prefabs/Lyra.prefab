@@ -81,7 +81,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.53261256, y: 0.33290142}
+  m_Offset: {x: 0.53261256, y: 0.18765236}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -91,7 +91,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.8715482, y: 0.964332}
+  m_Size: {x: 1.8715482, y: 1.2548301}
   m_EdgeRadius: 0
 --- !u!1 &2244333039126102870
 GameObject:
@@ -201,6 +201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce597236f2014b0498b6b283b0249cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   lyraCursorGO: {fileID: 6433703115905850068, guid: aaef3b339b1e50d478348acb8a64cc56, type: 3}
 --- !u!114 &1493890513875584720
 MonoBehaviour:

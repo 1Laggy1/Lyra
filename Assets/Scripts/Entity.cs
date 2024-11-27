@@ -30,24 +30,32 @@ public class Entity : NetworkBehaviour
     public virtual void Attack(int fasing)
     {
     }
-
+    public virtual void Died()
+    {
+        EntityDied?.Invoke(this, EventArgs.Empty);
+        Destroy(gameObject);
+    }
     [Command(requiresAuthority = false)]
     public virtual void Damage(float damage, int fasing)
     {
         DamageRPC(damage, fasing);
     }
     [ClientRpc]
-    public void DamageRPC(float damage, int fasing)
+    public virtual void DamageRPC(float damage, int fasing)
     {
         Health -= damage;
         Rb.AddForce(new Vector2(Knockback * fasing * 10000, Knockback * 3000), ForceMode2D.Force);
         if (Health <= 0)
         {
-            EntityDied?.Invoke(this, EventArgs.Empty);
+            Died();
         }
         else
         {
-            EntityDamaged?.Invoke(this, EventArgs.Empty);
+            OnDamaged();
         }
+    }
+    public virtual void OnDamaged()
+    {
+        EntityDamaged?.Invoke(this, EventArgs.Empty);
     }
 }
