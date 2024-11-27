@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class DoorLyraAbilityItem : MonoBehaviour, ILyraAbilityItem
+public class DoorLyraAbilityItem : ILyraAbilityItem
 {
     [SerializeField]
     DoorVertical doorVertical;
-    public void UseAbility()
+    public override void UseAbility()
     {
+        base.UseAbility();
         doorVertical.Use();
     }
 }
