@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\MyNetworkManager.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\ICombat.cs" />
+    <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\IInputProvider.cs" />
     <Compile Include="Assets\Scripts\LyraCursor.cs" />
   </ItemGroup>
