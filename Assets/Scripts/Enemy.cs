@@ -11,7 +11,7 @@ public class Enemy : Entity
         EntityDied += Died;
     }
 
-    void Died(object sender, EventArgs eventArgs)
+    public virtual void Died(object sender, EventArgs eventArgs)
     {
         Destroy(gameObject);
     }
