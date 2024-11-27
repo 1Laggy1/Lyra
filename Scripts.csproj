@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\LyraAbility.cs" />
     <Compile Include="Assets\Scripts\WalkableEnemy.cs" />
     <Compile Include="Assets\Scripts\ConsoleToGUI.cs" />
+    <Compile Include="Assets\Scripts\BeetleEnemy.cs" />
     <Compile Include="Assets\Scripts\SpawnInTime.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />

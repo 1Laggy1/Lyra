@@ -15,7 +15,10 @@ public class PlayerCombat : Entity
     {
         return;
     }
+    public override void Died()
+    {
 
+    }
     public override void Attack(int fasing)
     {
         if (pcr.EnemysInRange.Count() != 0 && TimeSinceAttack > AttackSpeed)

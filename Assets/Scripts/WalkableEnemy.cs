@@ -7,7 +7,7 @@ public class WalkableEnemy : Enemy
     public float detectionRadius = 5f; // Radius for detecting the player
     private List<Transform> playersTransforms = new List<Transform>();
     private Transform currentPlayer;
-    private NPCAI npcAI;
+    public NPCAI npcAI;
 
     void Start()
     {
@@ -15,7 +15,6 @@ public class WalkableEnemy : Enemy
 
         if (!isServer)
         {
-            this.enabled = false;
             return;
         }
         npcAI = GetComponent<NPCAI>();
@@ -37,6 +36,10 @@ public class WalkableEnemy : Enemy
 
     void FixedUpdate()
     {
+        if (!isServer)
+        {
+            return;
+        }
         if (npcAI != null)
         {
             FindClosestPlayer();

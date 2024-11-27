@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - LyraAbilityItem
   - SpawnManager
+  - NetworkManager
   layers:
   - Default
   - TransparentFX

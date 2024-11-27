@@ -9,7 +9,7 @@ public class NPCAI : NetworkBehaviour
     [SerializeField]
     private float jumpForce = 5f; // Force for jumping
     [SerializeField]
-    private float walkingSpeed = 2f; // Horizontal walking speed
+    public float walkingSpeed = 2f; // Horizontal walking speed
 
     [SerializeField]
     private float acceleration = 2f; // Чим більше значення, тим швидший розгін

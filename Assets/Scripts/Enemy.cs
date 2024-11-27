@@ -8,12 +8,6 @@ public class Enemy : Entity
 {
     public void Start()
     {
-        EntityDied += Died;
-    }
-
-    void Died(object sender, EventArgs eventArgs)
-    {
-        Destroy(gameObject);
     }
 
     public void AttackPlayer(Entity entity)
@@ -27,6 +21,6 @@ public class Enemy : Entity
 
     public void OnCollisionStay2D(Collision2D other)
     {
-        
+
     }
 }
