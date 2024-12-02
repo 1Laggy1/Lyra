@@ -32,8 +32,8 @@ public class CameraMovement : MonoBehaviour
     IEnumerator WaitPlayers()
     {
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Player").Length == 2);
-        player1 = GameObject.Find("Kayden(Clone)").GetComponent<Transform>();
-        player2 = GameObject.Find("Lyra(Clone)").GetComponent<Transform>();
+        player1 =  GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
+        player2 = GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<Transform>();
         this.enabled = false;
         this.enabled = true;
         playersConnected = true;
