@@ -98,6 +98,7 @@ public class MyNetworkManager : NetworkManager
     }
     public override void OnApplicationQuit()
     {
+        transport.Shutdown();
         try
         {
             StopClient();
