@@ -35,13 +35,29 @@ public class PlayerMovementTests
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewScene");
         yield return new WaitUntil(() => SceneManager.GetActiveScene().isLoaded == true);
         activeScene = SceneManager.GetActiveScene();
-        yield return new WaitUntil(() => activeScene.GetRootGameObjects().FirstOrDefault(go => go.name == "Kayden(Clone)") != null);
-        player = activeScene.GetRootGameObjects().FirstOrDefault(go => go.name == "Kayden(Clone)");
+        yield return new WaitUntil(() => FindInDontDestroyOnLoad("Kayden(Clone)") != null);
+        player = FindInDontDestroyOnLoad("Kayden(Clone)");
         Assert.IsNotNull(player, "Об'єкт гравця не знайдено!");
         playerMovement = player.GetComponent<PlayerMovement>();
         Assert.IsNotNull(playerMovement, "Компонент PlayerMovement не знайдено на об'єкті гравця!");
         activeScene.GetRootGameObjects().FirstOrDefault(go => go.name == "Ground").SetActive(false);
         oneTimeSetup = true;
+    }
+
+    private GameObject FindInDontDestroyOnLoad(string name)
+    {
+        // Отримуємо всі об'єкти з null-сцени (об'єкти в DontDestroyOnLoad)
+        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.name == name)
+            {
+                return obj; // Знайдений об'єкт
+            }
+        }
+
+        return null; // Якщо об'єкт не знайдений
     }
 
     [UnityTest]
