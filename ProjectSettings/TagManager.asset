@@ -9,6 +9,7 @@ TagManager:
   - LyraAbilityItem
   - SpawnManager
   - NetworkManager
+  - DialogManager
   layers:
   - Default
   - TransparentFX

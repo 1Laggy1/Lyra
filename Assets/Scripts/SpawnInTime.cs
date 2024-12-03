@@ -9,6 +9,8 @@ public class SpawnOneAttack
     public List<AttackInfo> attackInfos = new List<AttackInfo>();
 }
 
+
+
 [System.Serializable]
 public class AttackInfo
 {
