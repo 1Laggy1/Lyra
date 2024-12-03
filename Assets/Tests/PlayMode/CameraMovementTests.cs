@@ -10,7 +10,7 @@ public class CameraMovementTests
 {
     Scene activeScene;
     GameObject camera;
-    
+
 
     GameObject Kayden;
     GameObject Lyra;
@@ -46,10 +46,12 @@ public class CameraMovementTests
     [UnityTest]
     public IEnumerator DynamicModeMidPointMoveTest()
     {
+        Kayden.transform.position = new Vector3(1, 2, 0);
+        Lyra.transform.position = new Vector3(-1, 2, 0);
         camera.GetComponent<CameraMovement>().curretMode = CameraMovement.CameraMode.Dynamic;
         Kayden.transform.position = new Vector3(1, 2, 0);
         Lyra.transform.position = new Vector3(4, 2, 0);
-        
+
         yield return new WaitForSeconds(3);
         if (camera.transform.position.x >= 1.5 && camera.transform.position.x <= 3)
         {
@@ -59,10 +61,12 @@ public class CameraMovementTests
     [UnityTest]
     public IEnumerator DynamicModeMidPointSwapTest()
     {
+        Kayden.transform.position = new Vector3(1, 2, 0);
+        Lyra.transform.position = new Vector3(-1, 2, 0);
         camera.GetComponent<CameraMovement>().curretMode = CameraMovement.CameraMode.Dynamic;
         Kayden.transform.position = new Vector3(4, 2, 0);
         Lyra.transform.position = new Vector3(1, 2, 0);
-        
+
         yield return new WaitForSeconds(3);
         if (camera.transform.position.x >= 1.5 && camera.transform.position.x <= 3)
         {
