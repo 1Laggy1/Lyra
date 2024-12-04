@@ -59,7 +59,7 @@
     <UnityVersion>2023.1.11f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\Andrew\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Andrew\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.5\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\UnityEditors\2023.1.11f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\UnityEditors\2023.1.11f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -76,8 +76,8 @@
     <Compile Include="Assets\Scripts\WalkableEnemy.cs" />
     <Compile Include="Assets\Scripts\ConsoleToGUI.cs" />
     <Compile Include="Assets\Scripts\BeetleEnemy.cs" />
-    <Compile Include="Assets\Scripts\SpawnInTime.cs" />
     <Compile Include="Assets\Scripts\DialogSO.cs" />
+    <Compile Include="Assets\Scripts\SpawnInTime.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\IUseable.cs" />
@@ -104,10 +104,12 @@
     <Compile Include="Assets\Scripts\StartSpawnHere.cs" />
     <Compile Include="Assets\Scripts\MyNetworkManager.cs" />
     <Compile Include="Assets\Scripts\DialogManager.cs" />
+    <Compile Include="Assets\Scripts\CenterTextManager.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\ICombat.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\IInputProvider.cs" />
+    <Compile Include="Assets\Scripts\SceneNameOnStart.cs" />
     <Compile Include="Assets\Scripts\LyraCursor.cs" />
   </ItemGroup>
   <ItemGroup>
