@@ -487,128 +487,11 @@ MonoBehaviour:
   charactersImages:
   - Name: TestCharacter
     Image: {fileID: 21300000, guid: 13ba34da9011744c884f459ce4699444, type: 3}
---- !u!1 &216228339
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 216228340}
-  - component: {fileID: 216228342}
-  - component: {fileID: 216228341}
-  - component: {fileID: 216228343}
-  m_Layer: 0
-  m_Name: ElevetorCutScene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &216228340
+--- !u!4 &216228340 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+  m_PrefabInstance: {fileID: 5931028525880027517}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216228339}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1738528686}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &216228341
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216228339}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &216228342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216228339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3563e3185e598e54985df760be97081f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  ObjectsToAnim:
-  - Name: Elevator
-    Type: 0
-    AnimationGO: {fileID: 1794405343}
-    AnimClip: {fileID: 7400000, guid: 9a8969ff20cf4da4fb0dc491809ff4bd, type: 2}
-  - Name: ElevatorDialog
-    Type: 0
-    AnimationGO: {fileID: 480298751}
-    AnimClip: {fileID: 7400000, guid: 2cdfd5b0926e42f44857ff88c294cc1f, type: 2}
-  CutSceneDialog: {fileID: 11400000, guid: 75b858eb216e7f849b8bae98e4a4ea76, type: 2}
---- !u!114 &216228343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216228339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 2761239284
-  _assetId: 0
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
 --- !u!1 &250340628
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,6 +3480,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5345391622269404252, guid: 768aab0c7ab7c9646ba7358260755aff, type: 3}
   m_PrefabInstance: {fileID: 3461010357282352599}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5931028525880027517
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1738528686}
+    m_Modifications:
+    - target: {fileID: 2267352406282176001, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: ObjectsToAnim.Array.data[0].AnimationGO
+      value: 
+      objectReference: {fileID: 1794405343}
+    - target: {fileID: 2267352406282176001, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: ObjectsToAnim.Array.data[1].AnimationGO
+      value: 
+      objectReference: {fileID: 480298751}
+    - target: {fileID: 3385669954008709298, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: sceneId
+      value: 2761239284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302220685420081781, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_Name
+      value: ElevetorCutScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669878012292584488, guid: bc18aa58657284849aaebf34be42750b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc18aa58657284849aaebf34be42750b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
