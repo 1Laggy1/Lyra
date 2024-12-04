@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Mirror;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogManager : NetworkBehaviour
@@ -28,6 +30,7 @@ public class DialogManager : NetworkBehaviour
     bool skippedByPlayer;
     [SerializeField]
     List<CharactersImages> charactersImages = new List<CharactersImages>();
+    public Action<DialogSO> DialogEndedEvent;
     [Command(requiresAuthority = false)]
     public void StartDialogQueueCommand(DialogSO dialog)
     {
@@ -57,6 +60,7 @@ public class DialogManager : NetworkBehaviour
                 yield return new WaitUntil(() => playersSkipped == 2);
                 HideDialog();
             }
+            DialogEndedEvent.Invoke(dialogsQueue[0]);
             dialogsQueue.Remove(dialogsQueue[0]);
         }
         dialogStarted = false;
