@@ -10,6 +10,7 @@ TagManager:
   - SpawnManager
   - NetworkManager
   - DialogManager
+  - CenterTextManager
   layers:
   - Default
   - TransparentFX

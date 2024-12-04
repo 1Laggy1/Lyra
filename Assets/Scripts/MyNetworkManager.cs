@@ -59,7 +59,7 @@ public class MyNetworkManager : NetworkManager
     public override void OnStartServer()
     {
         base.OnStartServer();
-        ServerChangeScene("AndrewScene"); // Використовуємо ServerChangeScene для зміни сцени на сервері
+        ServerChangeScene("AndrewSceneDialogSystem"); // Використовуємо ServerChangeScene для зміни сцени на сервері
 
     }
 
@@ -92,7 +92,7 @@ public class MyNetworkManager : NetworkManager
 
     IEnumerator SpawnHostPlayer()
     {
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewScene");
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewSceneDialogSystem");
         GameObject gameobject = (NetworkManagerConfig.Character == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
         NetworkServer.AddPlayerForConnection(NetworkServer.connections[0], gameobject);
     }
