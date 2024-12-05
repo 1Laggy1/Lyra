@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\LyraSpellType.cs" />
     <Compile Include="Assets\Scripts\KaydenAbility.cs" />
     <Compile Include="Assets\Scripts\PlayerAbility.cs" />
+    <Compile Include="Assets\Scripts\CutSceneManager.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\ConnectMessage.cs" />
     <Compile Include="Assets\Scripts\LyraAbility.cs" />
@@ -106,9 +107,11 @@
     <Compile Include="Assets\Scripts\DialogManager.cs" />
     <Compile Include="Assets\Scripts\CenterTextManager.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\CutScene.cs" />
     <Compile Include="Assets\Scripts\ICombat.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\IInputProvider.cs" />
+    <Compile Include="Assets\Scripts\StartCutSceneHere.cs" />
     <Compile Include="Assets\Scripts\SceneNameOnStart.cs" />
     <Compile Include="Assets\Scripts\LyraCursor.cs" />
   </ItemGroup>
