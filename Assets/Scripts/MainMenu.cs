@@ -7,7 +7,6 @@ public class MainMenu : MonoBehaviour
     public GameObject ServerType;
     public GameObject ChooseTypeOfClient;
     public GameObject ChooseCharacter;
-    public GameObject SettingsPanel;
     [SerializeField]
     TMP_Text ip_Text;
     GameObject networkManagerGO;
@@ -86,12 +85,6 @@ public class MainMenu : MonoBehaviour
     {
         ChooseCharacter.SetActive(false);
         ServerType.SetActive(true);
-    }
-
-    public void GoToSettings()
-    {
-        Main.SetActive(false);
-        SettingsPanel.SetActive(true);
     }
 
     public void ChooseLyra()
