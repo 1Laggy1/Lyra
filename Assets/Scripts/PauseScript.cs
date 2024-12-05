@@ -7,6 +7,14 @@ public class PauseScript : MonoBehaviour
 {
     public GameObject PausePanel;
 
+    public GameObject SettingsPanel;
+
+    public void GoToSettings()
+    {
+        PausePanel.SetActive(false);
+        SettingsPanel.SetActive(true);
+    }
+
     public void BackToMenu()
     {
         // todo shutting down server if player is host
