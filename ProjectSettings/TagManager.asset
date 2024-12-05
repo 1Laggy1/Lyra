@@ -11,6 +11,7 @@ TagManager:
   - NetworkManager
   - DialogManager
   - CenterTextManager
+  - CutSceneManager
   layers:
   - Default
   - TransparentFX

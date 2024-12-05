@@ -71,7 +71,7 @@ public class DialogManager : NetworkBehaviour
         playersSkipped++;
     }
     [ClientRpc]
-    void ShowDialog(DialogInfo dialogInfo)
+    public void ShowDialog(DialogInfo dialogInfo)
     {
         characterImage.sprite = charactersImages.FirstOrDefault(image => image.Name == dialogInfo.Character.CharacterImageName).Image;
         characterName.text = dialogInfo.Character.Name;
@@ -84,6 +84,11 @@ public class DialogManager : NetworkBehaviour
     {
         skippedByPlayer = false;
         dialogGO.SetActive(false);
+    }
+    public void CutSceneDialog(DialogInfo dialogInfo)
+    {
+        if (isServer)
+        ShowDialog(dialogInfo);
     }
     // Start is called before the first frame update
     void Start()
