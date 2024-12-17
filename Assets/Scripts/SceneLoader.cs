@@ -55,8 +55,8 @@ public class SceneLoader : NetworkBehaviour
         Debug.Log($"Trying changing scene Lyra: {lyraHere}, Kayden: {kaydenHere}");
         if (kaydenHere && lyraHere)
         {
+            PlayerPrefs.SetString("LastSceneName", nextSceneName);
             nm.ServerChangeScene(nextSceneName);
-            PlayerPrefs.SetString("LastSceneID", nextSceneName);
         }
     }
 }

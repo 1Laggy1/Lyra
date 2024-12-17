@@ -12,6 +12,9 @@ TagManager:
   - DialogManager
   - CenterTextManager
   - CutSceneManager
+  - KaydenSpawnPoint
+  - LyraSpawnPoint
+  - WaitPlayers
   layers:
   - Default
   - TransparentFX

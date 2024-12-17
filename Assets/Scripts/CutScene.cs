@@ -6,7 +6,8 @@ public enum CutSceneObjectType
 {
     GO,
     Kayden,
-    Lyra
+    Lyra,
+    Camera
 }
 [System.Serializable]
 public class CutSceneObject

@@ -11,13 +11,15 @@ public class CutSceneManager : MonoBehaviour
     GameObject Lyra;
     Animation KaydenAnim;
 
-
+    PlayerMovement KaydenMovement;
+    PlayerMovement LyraMovement;
     Animation LyraAnim;
 
     DialogSO currentDialog;
     int dialogNumber = 0;
     public Action OnCutSceneEndedEvent;
     DialogManager dialogManager;
+    CameraMode previousCameraMode;
 
     public void Start()
     {
@@ -33,16 +35,21 @@ public class CutSceneManager : MonoBehaviour
         Lyra = GameObject.Find("Lyra(Clone)");
         KaydenAnim = Kayden.GetComponent<Animation>();
         LyraAnim = Lyra.GetComponent<Animation>();
+        LyraMovement = Lyra.GetComponent<PlayerMovement>();
+        KaydenMovement = Kayden.GetComponent<PlayerMovement>();
 
 
     }
     IEnumerator OnCutSceneEnded(Animation animationToTrack)
     {
         yield return new WaitUntil(() => animationToTrack.isPlaying == false);
-        OnCutSceneEndedEvent.Invoke();
+        if (OnCutSceneEndedEvent != null)
+            OnCutSceneEndedEvent.Invoke();
         currentDialog = null;
         dialogNumber = 0;
-
+        LyraMovement.SetInputProvider(new InputProvider());
+        KaydenMovement.SetInputProvider(new InputProvider());
+        Camera.main.GetComponent<CameraMovement>().curretMode = previousCameraMode;
 
     }
     public void StartAnim(List<CutSceneObject> objectsToAnim, DialogSO dialog)
@@ -50,6 +57,15 @@ public class CutSceneManager : MonoBehaviour
         if (dialog != null)
         {
             currentDialog = dialog;
+        }
+        if (LyraAnim == null)
+        {
+            Kayden = GameObject.Find("Kayden(Clone)");
+            Lyra = GameObject.Find("Lyra(Clone)");
+            KaydenAnim = Kayden.GetComponent<Animation>();
+            LyraAnim = Lyra.GetComponent<Animation>();
+            LyraMovement = Lyra.GetComponent<PlayerMovement>();
+            KaydenMovement = Kayden.GetComponent<PlayerMovement>();
         }
         foreach (CutSceneObject cutSceneObject in objectsToAnim)
         {
@@ -60,11 +76,21 @@ public class CutSceneManager : MonoBehaviour
                     cutSceneObject.AnimationGO.AddClip(cutSceneObject.AnimClip, cutSceneObject.Name);
                     break;
                 case CutSceneObjectType.Kayden:
+                    KaydenMovement.isAnim = true;
                     KaydenAnim.AddClip(cutSceneObject.AnimClip, cutSceneObject.Name);
+                    KaydenMovement.SetInputProvider(new CutSceneInputProvider());
                     break;
                 case CutSceneObjectType.Lyra:
+                    LyraMovement.isAnim = true;
                     LyraAnim.AddClip(cutSceneObject.AnimClip, cutSceneObject.Name);
+                    LyraMovement.SetInputProvider(new CutSceneInputProvider());
                     break;
+                case CutSceneObjectType.Camera:
+                    cutSceneObject.AnimationGO.AddClip(cutSceneObject.AnimClip, cutSceneObject.Name);
+                    previousCameraMode = cutSceneObject.AnimationGO.gameObject.GetComponent<CameraMovement>().curretMode;
+                    cutSceneObject.AnimationGO.gameObject.GetComponent<CameraMovement>().curretMode = CameraMode.None;
+                    break;
+
             }
         }
         foreach (CutSceneObject cutSceneObject in objectsToAnim)
@@ -80,6 +106,9 @@ public class CutSceneManager : MonoBehaviour
                 case CutSceneObjectType.Lyra:
                     LyraAnim.Play(cutSceneObject.Name);
                     break;
+                case CutSceneObjectType.Camera:
+                    cutSceneObject.AnimationGO.Play(cutSceneObject.Name);
+                    break;
             }
         }
         CutSceneObject longestAnim = objectsToAnim[0];
@@ -94,7 +123,14 @@ public class CutSceneManager : MonoBehaviour
     }
     public void ShowCurrentDialogOfCurrentAnim()
     {
-        dialogManager.CutSceneDialog(currentDialog.dialogs[dialogNumber]);
+        if (dialogNumber < currentDialog.dialogs.Count())
+        {
+            dialogManager.CutSceneDialog(currentDialog.dialogs[dialogNumber]);
+        }
+        else
+        {
+            dialogManager.HideCutSceneDialog();
+        }
         dialogNumber++;
     }
 }

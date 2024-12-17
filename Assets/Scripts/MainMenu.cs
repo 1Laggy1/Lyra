@@ -1,3 +1,4 @@
+using Mirror;
 using TMPro;
 using UnityEngine;
 
@@ -21,10 +22,47 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        GameObject nm = GameObject.FindGameObjectWithTag("NetworkManager");
+        if (nm != null)
+        {
+            NetworkManager networkManager = nm.GetComponent<NetworkManager>();
+
+            // Перевірка і зупинка сервера
+            if (networkManager.isNetworkActive)
+            {
+                if (NetworkServer.active)
+                {
+                    networkManager.StopServer();
+                }
+
+                // Перевірка і зупинка хоста
+                if (NetworkClient.isConnected && NetworkServer.active)
+                {
+                    networkManager.StopHost();
+                }
+                // Перевірка і зупинка клієнта
+                else if (NetworkClient.isConnected)
+                {
+                    networkManager.StopClient();
+                }
+            }
+
+            // Завершення роботи транспорту
+            Transport transport = nm.GetComponent<Transport>();
+            if (transport != null)
+            {
+                transport.Shutdown();
+            }
+
+            // Знищення NetworkManager після завершення всіх процесів
+            //Destroy(nm);
+        }
     }
+
 
     public void Play()
     {
+        NetworkManagerConfig.CurrentSceneLoading = "Level0";
         Main.SetActive(false);
         ChooseTypeOfClient.SetActive(true);
     }
@@ -89,6 +127,11 @@ public class MainMenu : MonoBehaviour
 
     public void ChooseLyra()
     {
+        GameObject nm = GameObject.FindGameObjectWithTag("NetworkManager");
+        if (nm != null)
+        {
+            Destroy(nm);
+        }
         PlayerPrefs.SetString(CharacterType, "Lyra");
         NetworkManagerConfig.Character = "Lyra";
         NetworkManagerConfig.IP = ip_Text.text;
@@ -106,6 +149,11 @@ public class MainMenu : MonoBehaviour
 
     public void ChooseKayden()
     {
+        GameObject nm = GameObject.FindGameObjectWithTag("NetworkManager");
+        if (nm != null)
+        {
+            Destroy(nm);
+        }
         PlayerPrefs.SetString(CharacterType, "Kayden");
         NetworkManagerConfig.Character = "Kayden";
         NetworkManagerConfig.IP = ip_Text.text;

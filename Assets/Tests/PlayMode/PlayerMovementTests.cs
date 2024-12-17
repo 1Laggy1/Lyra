@@ -30,9 +30,11 @@ public class PlayerMovementTests
         NetworkManagerConfig.Character = "Kayden";
         NetworkManagerConfig.IsClient = false;
         NetworkManagerConfig.Transport = "IP";
+        NetworkManagerConfig.IsTesting = true;
         Assert.IsNotNull(networkManager, "MyNetworkManager не знайдено на сцені.");
+        NetworkManagerConfig.CurrentSceneLoading = "Level0MovementTesting";
         networkManager.StartManager();
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewScene");
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "Level0MovementTesting");
         yield return new WaitUntil(() => SceneManager.GetActiveScene().isLoaded == true);
         activeScene = SceneManager.GetActiveScene();
         yield return new WaitUntil(() => FindInDontDestroyOnLoad("Kayden(Clone)") != null);

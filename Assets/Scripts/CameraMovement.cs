@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
+public enum CameraMode { Static, Dynamic, None }
 public class CameraMovement : MonoBehaviour
 {
-    public enum CameraMode { Static, Dynamic }
+    
     public CameraMode curretMode = CameraMode.Static;
     private Vector3 staticPosition;
     [SerializeField] private Transform player1;
@@ -15,7 +16,7 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float maxZoom = 15f;
     [SerializeField] private float zoomSpeed = 5f;
-    [SerializeField]private float maxOffset = 3f;
+    [SerializeField] private float maxOffset = 3f;
     [SerializeField] private float followSpeed = 5f;
     [SerializeField] private float targetZoom = 0f;
     [SerializeField] private float distance = 0f;
@@ -32,7 +33,7 @@ public class CameraMovement : MonoBehaviour
     IEnumerator WaitPlayers()
     {
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Player").Length == 2);
-        player1 =  GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
+        player1 = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
         player2 = GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<Transform>();
         this.enabled = false;
         this.enabled = true;
@@ -44,8 +45,8 @@ public class CameraMovement : MonoBehaviour
         switch (curretMode)
         {
             case CameraMode.Static:
-                transform.position = Vector3.Lerp(transform.position, staticPosition, followSpeed*Time.deltaTime);
-            break;
+                transform.position = Vector3.Lerp(transform.position, staticPosition, followSpeed * Time.deltaTime);
+                break;
             case CameraMode.Dynamic:
                 HandleDynamicMode();
                 break;
@@ -57,19 +58,19 @@ public class CameraMovement : MonoBehaviour
     }
     private void HandleDynamicMode()
     {
-        Vector3 midPoint = (player1.position + player2.position)/2f;
+        Vector3 midPoint = (player1.position + player2.position) / 2f;
         midPoint = new Vector3(midPoint.x, midPoint.y + 5, midPoint.z);
         distance = Vector2.Distance(player1.position, player2.position);
-        distance = distance/2;
+        distance = distance / 2;
         targetZoom = Mathf.Clamp(distance, minZoom, maxZoom);
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomSpeed * Time.deltaTime);
         Vector2 mouseoffset = GetMouseOffset();
         Vector2 joystickOffset = Vector2.zero;//GetJoystickOffset();
-        inputOffset = Vector2.Lerp(inputOffset, mouseoffset+joystickOffset, followSpeed*Time.deltaTime);
+        inputOffset = Vector2.Lerp(inputOffset, mouseoffset + joystickOffset, followSpeed * Time.deltaTime);
         inputOffset = Vector2.ClampMagnitude(inputOffset, maxOffset);
         Vector3 targetPosition = midPoint + new Vector3(inputOffset.x, inputOffset.y, -10f);
         targetPosition = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed*Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
     }
     private Vector2 GetJoystickOffset()
     {

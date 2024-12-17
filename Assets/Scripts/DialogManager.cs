@@ -25,12 +25,12 @@ public class DialogManager : NetworkBehaviour
     int playersSkipped;
     List<DialogSO> dialogsQueue = new List<DialogSO>();
     [SyncVar]
-    bool dialogStarted;
+    public bool dialogStarted;
     [SerializeField]
     bool skippedByPlayer;
     [SerializeField]
     List<CharactersImages> charactersImages = new List<CharactersImages>();
-    public Action<DialogSO> DialogEndedEvent;
+    public event Action<DialogSO> DialogEndedEvent;
     [Command(requiresAuthority = false)]
     public void StartDialogQueueCommand(DialogSO dialog)
     {
@@ -60,7 +60,8 @@ public class DialogManager : NetworkBehaviour
                 yield return new WaitUntil(() => playersSkipped == 2);
                 HideDialog();
             }
-            DialogEndedEvent.Invoke(dialogsQueue[0]);
+            if (DialogEndedEvent != null)
+                DialogEndedEvent.Invoke(dialogsQueue[0]);
             dialogsQueue.Remove(dialogsQueue[0]);
         }
         dialogStarted = false;
@@ -88,7 +89,12 @@ public class DialogManager : NetworkBehaviour
     public void CutSceneDialog(DialogInfo dialogInfo)
     {
         if (isServer)
-        ShowDialog(dialogInfo);
+            ShowDialog(dialogInfo);
+    }
+    public void HideCutSceneDialog()
+    {
+        if (isServer)
+            HideDialog();
     }
     // Start is called before the first frame update
     void Start()

@@ -27,6 +27,11 @@ public class PlayerMovement : NetworkBehaviour
     private float currentJumpInput = 0f;
 
     private IUseable currentUseable;
+    [SerializeField]
+    Animator animator;
+    [SerializeField]
+    public Animation anim;
+    public bool isAnim = false;
 
     public void SetInputProvider(IInputProvider provider)
     {
@@ -54,11 +59,25 @@ public class PlayerMovement : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         Use();
         Attack();
         UseAbility();
         horizontalMoveMax = inputProvider.GetHorizontal() * maxSpeed;
         horizontalMove = inputProvider.GetHorizontal() * speed;
+        if (MathF.Abs(horizontalMove) > 0 && !animator.GetBool("Run"))
+        {
+            Debug.Log("Enabled");
+            RunAnimationEnable();
+        }
+        if (MathF.Abs(horizontalMove) == 0 && !isAnim && animator.GetBool("Run"))
+        {
+            Debug.Log("Disabled");
+            RunAnimationDisable();
+        }
         if (Input.GetButton("Jump"))
         {
             // Gradually increase the jump input value up to maxJumpInput
@@ -128,5 +147,25 @@ public class PlayerMovement : NetworkBehaviour
         {
             currentUseable = null;
         }
+    }
+    [Command(requiresAuthority = false)]
+    public void RunAnimationEnable()
+    {
+        RunAnimationEnableRPC();
+    }
+    [Command(requiresAuthority = false)]
+    public void RunAnimationDisable()
+    {
+        RunAnimationDisableRPC();
+    }
+    [ClientRpc]
+    public void RunAnimationEnableRPC()
+    {
+        animator.SetBool("Run", true);
+    }
+    [ClientRpc]
+    public void RunAnimationDisableRPC()
+    {
+        animator.SetBool("Run", false);
     }
 }

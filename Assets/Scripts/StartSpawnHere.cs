@@ -7,19 +7,14 @@ using UnityEngine;
 
 public class StartSpawnHere : NetworkBehaviour
 {
+    bool isSpawning;
+    bool firstSpawn = true;
+    bool loop;
+    
     [SerializeField]
     SpawnInTime spawnInTime;
     SpawnManager sm;
-    bool isSpawning;
-    [SerializeField]
-    bool loop;
-    bool firstSpawn = true;
 
-    int spawnedGos = 0;
-    [SerializeField]
-    AudioSource audioSource;
-    [SerializeField]
-    AudioClip enemiesSpawnAudio;
     void Start()
     {
         if (!isServer)
@@ -36,49 +31,17 @@ public class StartSpawnHere : NetworkBehaviour
         {
             firstSpawn = false;
             isSpawning = true;
-            StartCoroutine(Spawning());
+            sm.StartSpawning(spawnInTime);
+            sm.SpawnEndedEvent += SpawnEnded;
 
         }
     }
-
-
-    IEnumerator Spawning()
+    public void SpawnEnded(SpawnInTime spawn)
     {
-        foreach (SpawnOneAttack soa in spawnInTime.WhatToSpawn)
+        if (spawn == spawnInTime)
         {
-            yield return new WaitForSeconds(soa.Time);
-            SpawnAudio();
-            foreach (AttackInfo attackInfo in soa.attackInfos)
-            {
-                for (int i = 1; i <= attackInfo.Amount; i++)
-                {
-                    GameObject go = sm.Spawn(attackInfo.Go, attackInfo.Spawnpoint);
-                    spawnedGos++;
-                    go.GetComponent<Entity>().EntityDied += EnemyDies;
-                }
-            }
-
-            if (!spawnInTime.Haos)
-                yield return new WaitUntil(() => spawnedGos == 0);
+            isSpawning = false;
         }
-        isSpawning = false;
-        yield return null;
     }
 
-    [Command(requiresAuthority = false)]
-    public void SpawnAudio()
-    {
-        SpawnAudioClientRPC();
-    }
-    [ClientRpc]
-    public void SpawnAudioClientRPC()
-    {
-        if (PlayerPrefs.GetFloat("Volume_effects") != 0)
-            audioSource.volume = PlayerPrefs.GetFloat("Volume_effects");
-        audioSource.PlayOneShot(enemiesSpawnAudio);
-    }
-    public void EnemyDies(object sender, EventArgs eventArgs)
-    {
-        spawnedGos--;
-    }
 }

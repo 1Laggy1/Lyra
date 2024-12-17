@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level0.unity
     guid: e165bae66f23e6342b946f19290ed66f
   - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: f35028ef653c60d4b9501e34b9699cea
+  - enabled: 1
     path: Assets/Scenes/AndrewScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -20,5 +23,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UnitTestScene.unity
     guid: 48fa07cbe88301247add452048bef552
+  - enabled: 1
+    path: Assets/Scenes/Level0MovementTesting.unity
+    guid: 63a38c137271fda499c6ff1802d0d4ec
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
