@@ -8,4 +8,6 @@ public struct NetworkManagerConfig
     public static bool IsClient;
     public static string IP;
     public static string Character;
+    public static string CurrentSceneLoading;
+    public static bool IsTesting;
 }

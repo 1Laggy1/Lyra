@@ -22,6 +22,7 @@ public class AttackInfo
 [CreateAssetMenu(fileName = "SpawnInTime", menuName = "Custom/SpawnInformation", order = 1)]
 public class SpawnInTime : ScriptableObject
 {
+    public string Name;
     public bool Haos;
     public List<SpawnOneAttack> WhatToSpawn = new List<SpawnOneAttack>();
 }

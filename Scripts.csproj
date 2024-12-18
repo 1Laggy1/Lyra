@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\IUseable.cs" />
     <Compile Include="Assets\Scripts\MainMenuMusic.cs" />
+    <Compile Include="Assets\Scripts\WaitPlayers.cs" />
     <Compile Include="Assets\Scripts\SteamInfo.cs" />
     <Compile Include="Assets\Scripts\ILyraAbilityItem.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
@@ -103,10 +104,13 @@
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\WalkAI.cs" />
     <Compile Include="Assets\Scripts\StartSpawnHere.cs" />
+    <Compile Include="Assets\Scripts\CutSceneInputProvider.cs" />
     <Compile Include="Assets\Scripts\MyNetworkManager.cs" />
     <Compile Include="Assets\Scripts\DialogManager.cs" />
     <Compile Include="Assets\Scripts\CenterTextManager.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\vent.cs" />
+    <Compile Include="Assets\Scripts\Notepad.cs" />
     <Compile Include="Assets\Scripts\CutScene.cs" />
     <Compile Include="Assets\Scripts\ICombat.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />

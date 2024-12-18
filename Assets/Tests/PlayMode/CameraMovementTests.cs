@@ -17,8 +17,8 @@ public class CameraMovementTests
     [UnitySetUp]
     public IEnumerator Setup()
     {
-        SceneManager.LoadScene("AndrewScene");
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewScene");
+        SceneManager.LoadScene("Level0MovementTesting");
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "Level0MovementTesting");
         yield return new WaitUntil(() => SceneManager.GetActiveScene().isLoaded == true);
         activeScene = SceneManager.GetActiveScene();
         Kayden = GameObject.CreatePrimitive(PrimitiveType.Quad);
@@ -36,7 +36,7 @@ public class CameraMovementTests
     public IEnumerator DynamicModeMidPointTest()
     {
 
-        camera.GetComponent<CameraMovement>().curretMode = CameraMovement.CameraMode.Dynamic;
+        camera.GetComponent<CameraMovement>().curretMode = CameraMode.Dynamic;
         yield return new WaitForSeconds(3);
         if (camera.transform.position.x >= -1 && camera.transform.position.x <= 1)
         {
@@ -48,7 +48,7 @@ public class CameraMovementTests
     {
         Kayden.transform.position = new Vector3(1, 2, 0);
         Lyra.transform.position = new Vector3(-1, 2, 0);
-        camera.GetComponent<CameraMovement>().curretMode = CameraMovement.CameraMode.Dynamic;
+        camera.GetComponent<CameraMovement>().curretMode = CameraMode.Dynamic;
         Kayden.transform.position = new Vector3(1, 2, 0);
         Lyra.transform.position = new Vector3(4, 2, 0);
 
@@ -63,7 +63,7 @@ public class CameraMovementTests
     {
         Kayden.transform.position = new Vector3(1, 2, 0);
         Lyra.transform.position = new Vector3(-1, 2, 0);
-        camera.GetComponent<CameraMovement>().curretMode = CameraMovement.CameraMode.Dynamic;
+        camera.GetComponent<CameraMovement>().curretMode = CameraMode.Dynamic;
         Kayden.transform.position = new Vector3(4, 2, 0);
         Lyra.transform.position = new Vector3(1, 2, 0);
 

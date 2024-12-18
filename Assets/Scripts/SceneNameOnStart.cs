@@ -7,7 +7,7 @@ public class SceneNameOnStart : MonoBehaviour
 {
     CenterTextManager ct;
     [SerializeField]
-    string description;
+    public string description;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +19,6 @@ public class SceneNameOnStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

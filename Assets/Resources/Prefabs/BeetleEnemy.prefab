@@ -88,6 +88,7 @@ MonoBehaviour:
   AttackSpeed: 0.4
   TimeSinceAttack: 0
   detectionRadius: 7
+  npcAI: {fileID: 0}
 --- !u!212 &2930643863530785247
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &-1653875404166027232
 BoxCollider2D:

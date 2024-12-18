@@ -42,13 +42,13 @@ public class DoorVertical : IUseable
     {
         doorCollider.isTrigger = true;
         opened = true;
-        this.transform.DOMove(transform.position + new Vector3(0, 2, 0), 0.3f, false);
+        this.transform.DOMove(transform.position + new Vector3(0, transform.localScale.y, 0), 0.3f, false);
     }
 
     void Close()
     {
         opened = false;
-        this.transform.DOMove(transform.position + new Vector3(0, -2, 0), 0.3f, false);
+        this.transform.DOMove(transform.position + new Vector3(0, -transform.localScale.y, 0), 0.3f, false);
         doorCollider.isTrigger = false;
     }
 }

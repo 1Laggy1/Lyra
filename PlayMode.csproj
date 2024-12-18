@@ -64,10 +64,14 @@
     <Analyzer Include="C:\UnityEditors\2023.1.11f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Tests\PlayMode\CenterTextTesting.cs" />
+    <Compile Include="Assets\Tests\PlayMode\KaydenSpawnTesting.cs" />
+    <Compile Include="Assets\Tests\PlayMode\CenterTextTestingMethod.cs" />
     <Compile Include="Assets\Tests\PlayMode\CameraMovementTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\PlayerMovementTests.cs" />
     <Compile Include="Assets\Tests\PlayMode\SteamInfoTest.cs" />
     <Compile Include="Assets\Tests\PlayMode\TestingTests.cs" />
+    <Compile Include="Assets\Tests\PlayMode\LyraSpawnTesting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Tests\PlayMode\PlayMode.asmdef" />

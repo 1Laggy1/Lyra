@@ -19,6 +19,8 @@ public class MyNetworkManager : NetworkManager
     [SerializeField]
     SteamLobby steamLobby;
     bool firstClient = true;
+    GameObject FirstPlayer;
+
 
     public async void StartManager()
     {
@@ -59,7 +61,7 @@ public class MyNetworkManager : NetworkManager
     public override void OnStartServer()
     {
         base.OnStartServer();
-        ServerChangeScene("AndrewSceneDialogSystem"); // Використовуємо ServerChangeScene для зміни сцени на сервері
+        ServerChangeScene(NetworkManagerConfig.CurrentSceneLoading); // Використовуємо ServerChangeScene для зміни сцени на сервері
 
     }
 
@@ -88,13 +90,21 @@ public class MyNetworkManager : NetworkManager
     {
         GameObject gameobject = (message.Message == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
         NetworkServer.AddPlayerForConnection(conn, gameobject);
+        Time.timeScale = 1;
     }
 
     IEnumerator SpawnHostPlayer()
     {
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "AndrewSceneDialogSystem");
-        GameObject gameobject = (NetworkManagerConfig.Character == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
-        NetworkServer.AddPlayerForConnection(NetworkServer.connections[0], gameobject);
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == NetworkManagerConfig.CurrentSceneLoading);
+        FirstPlayer = (NetworkManagerConfig.Character == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
+
+
+        NetworkServer.AddPlayerForConnection(NetworkServer.connections[0], FirstPlayer);
+        if (!NetworkManagerConfig.IsTesting)
+            Time.timeScale = 0;
+        FirstPlayer.transform.position = (NetworkManagerConfig.Character == "Kayden") ? GameObject.FindGameObjectWithTag("KaydenSpawnPoint").transform.position
+        : GameObject.FindGameObjectWithTag("LyraSpawnPoint").transform.position;
+
     }
     public override void OnApplicationQuit()
     {

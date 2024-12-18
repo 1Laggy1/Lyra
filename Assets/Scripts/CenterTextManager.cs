@@ -9,12 +9,12 @@ public class CenterTextManager : MonoBehaviour
     [SerializeField]
     GameObject centerTextGO;
     [SerializeField]
-    TMP_Text centerText;
+    public TMP_Text centerText;
 
 
 
     [SerializeField]
-    TMP_Text descriptionText;
+    public TMP_Text descriptionText;
     public void ShowText(string center, string description)
     {
         centerText.text = center;
@@ -39,12 +39,12 @@ public class CenterTextManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
