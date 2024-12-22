@@ -17,6 +17,7 @@ public class AttackInfo
     public Vector2 Spawnpoint;
     public GameObject Go;
     public float Amount;
+    public bool SeeAllTheTime;
 }
 
 [CreateAssetMenu(fileName = "SpawnInTime", menuName = "Custom/SpawnInformation", order = 1)]

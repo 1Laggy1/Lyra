@@ -6,9 +6,11 @@ using UnityEngine;
 public enum CameraMode { Static, Dynamic, None }
 public class CameraMovement : MonoBehaviour
 {
-    
+
     public CameraMode curretMode = CameraMode.Static;
+
     private Vector3 staticPosition;
+
     [SerializeField] private Transform player1;
     [SerializeField] private Transform player2;
 
@@ -16,10 +18,12 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float maxZoom = 15f;
     [SerializeField] private float zoomSpeed = 5f;
-    [SerializeField] private float maxOffset = 3f;
+    [SerializeField] private float maxOffset = 7f;
     [SerializeField] private float followSpeed = 5f;
     [SerializeField] private float targetZoom = 0f;
     [SerializeField] private float distance = 0f;
+    public bool ChangedMode;
+    float defaultOSize = 7;
     private Camera cam;
     private Vector2 inputOffset;
     bool playersConnected;
@@ -59,7 +63,7 @@ public class CameraMovement : MonoBehaviour
     private void HandleDynamicMode()
     {
         Vector3 midPoint = (player1.position + player2.position) / 2f;
-        midPoint = new Vector3(midPoint.x, midPoint.y + 5, midPoint.z);
+        midPoint = new Vector3(midPoint.x, midPoint.y, midPoint.z);
         distance = Vector2.Distance(player1.position, player2.position);
         distance = distance / 2;
         targetZoom = Mathf.Clamp(distance, minZoom, maxZoom);
@@ -84,5 +88,28 @@ public class CameraMovement : MonoBehaviour
         Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Vector2 normalizedOffset = (mousePosition - screenCenter) / screenCenter;
         return normalizedOffset * maxOffset;
+    }
+    public void SetDynamicMode(int changedMode = 0)
+    {
+        Debug.Log("Changed to Dynamic");
+        ChangedMode = changedMode == 1 ? true : false;
+        curretMode = CameraMode.Dynamic;
+    }
+    public void SetStaticMode(int changedMode = 0)
+    {
+        Debug.Log("Changed to static");
+        ChangedMode = changedMode == 1 ? true : false;
+        curretMode = CameraMode.Static;
+    }
+    public void SetNoneMode(int changedMode = 0)
+    {
+        Debug.Log("Changed to none");
+        ChangedMode = changedMode == 1 ? true : false;
+        curretMode = CameraMode.None;
+    }
+    public void SetFov(int fov)
+    {
+        Camera.main.orthographicSize = fov;
+        maxZoom += fov;
     }
 }

@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kayden stand emote._0: 1891240500072293176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

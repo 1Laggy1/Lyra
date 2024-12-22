@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d56a4b763ec1b429a1c1d7805b8f72, type: 3}
   m_Name: DialogAfterFight
   m_EditorClassIdentifier: 
+  Name: AfterFight
   dialogs:
   - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
-    Text: It's not bad, but if you were trying to hurt me, it's a little weak, but...
-      don't do it again
+    Text: It's not bad{500}, but if you were trying to hurt me, it's a little weak,
+      but...{1000} don't do it again
+    Speed: 0.03
+    WaitWhenEnded: 3
   - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
     Text: You asked for it yourself...
+    Speed: 0.03
+    WaitWhenEnded: 3

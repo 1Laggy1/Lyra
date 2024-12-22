@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d56a4b763ec1b429a1c1d7805b8f72, type: 3}
   m_Name: FirstLyraTalking
   m_EditorClassIdentifier: 
+  Name: LyraTalkingFirst
   dialogs:
   - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
-    Text: Hi, I'm being held in the next room, who are you? How long have you been
-      here?
+    Text: Hi{300}, I'm being held in the next room{300}, who are you?{500} How long
+      have you been here?
+    Speed: 0.03
+    WaitWhenEnded: 3
   - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
     Text: What.
+    Speed: 0.03
+    WaitWhenEnded: 3

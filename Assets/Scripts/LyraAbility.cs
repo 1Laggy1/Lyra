@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using Org.BouncyCastle.Asn1.X509.Qualified;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LyraAbility : PlayerAbility
 {
@@ -11,15 +13,20 @@ public class LyraAbility : PlayerAbility
     GameObject lyraCursorGO;
     GameObject currentLyraCursorGO;
     LyraCursor lyraCursor;
-
+    public Action<bool> AbilityActivatedBool;
     public void Start()
     {
+        AbilityActivatedBool = null;
+        SceneManager.activeSceneChanged += SceneChanged;
         if (!isLocalPlayer)
         {
             return;
         }
     }
-
+    public void SceneChanged(Scene old, Scene New)
+    {
+        AbilityActivatedBool = null;
+    }
     public override void UseAbility()
     {
         if (!isLocalPlayer)
@@ -58,7 +65,7 @@ public class LyraAbility : PlayerAbility
         {
             return;
         }
-    
+
         currentLyraCursorGO = spawnedCursor;
         lyraCursor = currentLyraCursorGO.GetComponent<LyraCursor>();
         StartAbility();
@@ -69,6 +76,10 @@ public class LyraAbility : PlayerAbility
         abilityStarted = true;
         currentLyraCursorGO.SetActive(true);
         lyraCursor.OnStartAbility();
+        lyraCursor.transform.position = transform.position;
+
+        AbilityActivatedBool?.Invoke(true);
+
     }
 
     private void StopAbility()
@@ -78,6 +89,9 @@ public class LyraAbility : PlayerAbility
             abilityStarted = false;
             lyraCursor.OnStopAbility();
             currentLyraCursorGO.SetActive(false);
+            AbilityActivatedBool?.Invoke(false);
+
+
         }
     }
 

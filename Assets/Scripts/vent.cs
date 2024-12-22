@@ -20,11 +20,12 @@ public class vent : ILyraAbilityItem
     DialogManager dm;
     bool first = true;
     [SyncVar]
-    bool canBeUsed = false;
+    public bool canBeUsed = false;
     [SerializeField]
     DialogSO enableAfterDialog;
-    public void Start()
+    public override void Start()
     {
+        base.Start();
         sm.SpawnEndedEvent += FightEnded;
         dm.DialogEndedEvent += CanBeUsed;
     }
@@ -33,13 +34,31 @@ public class vent : ILyraAbilityItem
         if (first && canBeUsed)
         {
             base.UseAbility();
-            sm.StartSpawning(spawnInTime);
+            if (isServer)
+            {
+                StartSpawnRPC();
+            }
+            else
+            {
+                StartSpawnCommand();
+            }
+
             VentAnimCommand();
 
             first = false;
         }
 
 
+    }
+    [Command(requiresAuthority = false)]
+    public void StartSpawnCommand()
+    {
+        sm.StartSpawning(spawnInTime);
+    }
+    [ClientRpc]
+    public void StartSpawnRPC()
+    {
+        sm.StartSpawning(spawnInTime);
     }
     [Command(requiresAuthority = false)]
     public void VentAnimCommand()
@@ -63,11 +82,15 @@ public class vent : ILyraAbilityItem
     }
     public void CanBeUsed(DialogSO dialogSO)
     {
-        if (dialogSO == enableAfterDialog)
+        if (!isServer)
+        {
+            return;
+        }
+        if (dialogSO.Name == enableAfterDialog.Name)
         {
             canBeUsed = true;
         }
-        if (dialogSO == dialogAfterFight)
+        if (dialogSO.Name == dialogAfterFight.Name)
         {
             PlayerPrefs.SetString("LastSceneName", "Level1");
             NetworkManager.singleton.ServerChangeScene("Level1");

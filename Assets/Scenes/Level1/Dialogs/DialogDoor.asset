@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d56a4b763ec1b429a1c1d7805b8f72, type: 3}
+  m_Name: DialogDoor
+  m_EditorClassIdentifier: 
+  Name: DialogDoor
+  dialogs:
+  - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
+    Text: There's a door here.{500} It's locked.
+    Speed: 0.03
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
+    Text: I think I can open it{300}, step back.
+    Speed: 0.05
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
+    Text: Are you sure?
+    Speed: 0.05
+    WaitWhenEnded: 1

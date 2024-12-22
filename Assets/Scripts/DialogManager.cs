@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Mirror;
 using TMPro;
 using UnityEngine;
@@ -31,6 +32,8 @@ public class DialogManager : NetworkBehaviour
     [SerializeField]
     List<CharactersImages> charactersImages = new List<CharactersImages>();
     public event Action<DialogSO> DialogEndedEvent;
+    private CancellationTokenSource currentTextAnimToken;
+    bool ended;
     [Command(requiresAuthority = false)]
     public void StartDialogQueueCommand(DialogSO dialog)
     {
@@ -56,8 +59,9 @@ public class DialogManager : NetworkBehaviour
             {
                 playersSkipped = 0;
                 skippedByPlayer = false;
+                ended = false;
                 ShowDialog(dialogInfo);
-                yield return new WaitUntil(() => playersSkipped == 2);
+                yield return new WaitUntil(() => ended);//() => playersSkipped == 2 || );
                 HideDialog();
             }
             if (DialogEndedEvent != null)
@@ -74,16 +78,67 @@ public class DialogManager : NetworkBehaviour
     [ClientRpc]
     public void ShowDialog(DialogInfo dialogInfo)
     {
-        characterImage.sprite = charactersImages.FirstOrDefault(image => image.Name == dialogInfo.Character.CharacterImageName).Image;
-        characterName.text = dialogInfo.Character.Name;
-        characterText.text = dialogInfo.Text;
-        dialogGO.SetActive(true);
-    }
+        // Зупиняємо попередню анімацію
+        currentTextAnimToken?.Cancel();
+        currentTextAnimToken = new CancellationTokenSource();
 
+        characterImage.sprite = charactersImages.FirstOrDefault(image => image.Name == dialogInfo.Character.CharacterImageName)?.Image;
+        characterName.text = dialogInfo.Character.Name;
+        characterText.text = "";
+        dialogGO.SetActive(true);
+
+        // Запускаємо нову анімацію
+        StartCoroutine(TextAnim(dialogInfo, currentTextAnimToken.Token));
+    }
+    public IEnumerator TextAnim(DialogInfo dialogInfo, CancellationToken token)
+    {
+        char[] characters = dialogInfo.Text.ToCharArray();
+        string currentText = "";
+        int symbol = -1;
+
+        while (!token.IsCancellationRequested)
+        {
+            yield return new WaitForSeconds(dialogInfo.Speed);
+            symbol++;
+            if (symbol < characters.Length)
+            {
+                if (characters[symbol] == '{')
+                {
+                    string seconds = "";
+                    int secondsNumber = 0;
+                    while (true)
+                    {
+                        secondsNumber++;
+                        if (int.TryParse(characters[symbol + secondsNumber].ToString(), out int number))
+                        {
+                            seconds += characters[symbol + secondsNumber];
+                        }
+                        else
+                        {
+                            symbol += secondsNumber + 1;
+                            int.TryParse(seconds, out int delay);
+                            float delayinseconds = (float)delay / 1000f;
+                            yield return new WaitForSeconds(delayinseconds);
+                            break;
+                        }
+                    }
+                }
+                currentText += characters[symbol];
+                characterText.text = currentText;
+            }
+            else
+            {
+                yield return new WaitForSeconds(dialogInfo.WaitWhenEnded);
+                break;
+            }
+        }
+        ended = true;
+    }
     [ClientRpc]
     void HideDialog()
     {
-        skippedByPlayer = false;
+        // Скасування анімації при закритті діалогу
+        currentTextAnimToken?.Cancel();
         dialogGO.SetActive(false);
     }
     public void CutSceneDialog(DialogInfo dialogInfo)

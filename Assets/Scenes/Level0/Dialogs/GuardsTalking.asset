@@ -12,16 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d56a4b763ec1b429a1c1d7805b8f72, type: 3}
   m_Name: GuardsTalking
   m_EditorClassIdentifier: 
+  Name: GuardsTalking
   dialogs:
   - Character: {fileID: 11400000, guid: 6b71245c809789f4d832cb8ccf04662d, type: 2}
-    Text: ' These failures again. The equipment is failing more than usual today. '
+    Text: These failures again.{500} The equipment is failing more than usual today.
+    Speed: 0.03
+    WaitWhenEnded: 3
   - Character: {fileID: 11400000, guid: 99ddf2a6cbc7ab94897816a400e61b46, type: 2}
     Text: You've been lying to me all day, just a little power outage and you're
       already panicking. We'll finish this now and go get a drink, you'll feel better.
+    Speed: 0.03
+    WaitWhenEnded: 3
   - Character: {fileID: 11400000, guid: 6b71245c809789f4d832cb8ccf04662d, type: 2}
-    Text: ' I don''t know if you''re right or not, but we definitely need a drink,
-      especially since we deserve it, we''ve worked so hard. Wake up, 397. '
+    Text: I don't know if you're right or not{200}, but we definitely need a drink,
+      especially since we deserve it,{300} we've worked so hard.{500} Wake up, 397.
+    Speed: 0.03
+    WaitWhenEnded: 3
   - Character: {fileID: 11400000, guid: 99ddf2a6cbc7ab94897816a400e61b46, type: 2}
     Text: We're almost there, the conditions here are more than enough for a good
       life, you'll get 3 meals a day, so you won't starve to death as soon as you
       complete all the tasks you're given.
+    Speed: 0.03
+    WaitWhenEnded: 3

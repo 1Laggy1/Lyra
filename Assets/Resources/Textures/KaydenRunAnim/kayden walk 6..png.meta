@@ -296,7 +296,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kayden walk 6._0: -4353555014746656185
+      kayden walk 6._1: 5385089124997890097
+      kayden walk 6._2: -6807726809661778165
+      kayden walk 6._3: -8724537190322166600
+      kayden walk 6._4: 9217778407694974320
+      kayden walk 6._5: -2848527392634824799
+      kayden walk 6._6: 5372194441685330779
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

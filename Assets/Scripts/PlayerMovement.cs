@@ -71,12 +71,27 @@ public class PlayerMovement : NetworkBehaviour
         if (MathF.Abs(horizontalMove) > 0 && !animator.GetBool("Run"))
         {
             Debug.Log("Enabled");
-            RunAnimationEnable();
+            if (isServer)
+            {
+                RunAnimationEnableRPC();
+            }
+            else
+            {
+                RunAnimationEnable();
+            }
+
         }
         if (MathF.Abs(horizontalMove) == 0 && !isAnim && animator.GetBool("Run"))
         {
             Debug.Log("Disabled");
-            RunAnimationDisable();
+            if (isServer)
+            {
+                RunAnimationDisableRPC();
+            }
+            else
+            {
+                RunAnimationDisable();
+            }
         }
         if (Input.GetButton("Jump"))
         {

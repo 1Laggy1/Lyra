@@ -20,10 +20,12 @@ public class CutSceneManager : MonoBehaviour
     public Action OnCutSceneEndedEvent;
     DialogManager dialogManager;
     CameraMode previousCameraMode;
+    CameraMovement cameraMovement;
 
     public void Start()
     {
         StartCoroutine(FindPlayers());
+        cameraMovement = Camera.main.GetComponent<CameraMovement>();
     }
 
     IEnumerator FindPlayers()
@@ -49,7 +51,29 @@ public class CutSceneManager : MonoBehaviour
         dialogNumber = 0;
         LyraMovement.SetInputProvider(new InputProvider());
         KaydenMovement.SetInputProvider(new InputProvider());
-        Camera.main.GetComponent<CameraMovement>().curretMode = previousCameraMode;
+        LyraMovement.isAnim = false;
+        KaydenMovement.isAnim = false;
+
+        if (Camera.main.GetComponent<CameraMovement>().ChangedMode)
+        {
+            Camera.main.GetComponent<CameraMovement>().ChangedMode = false;
+        }
+        else
+        {
+            switch (previousCameraMode)
+            {
+                case CameraMode.Dynamic:
+                    cameraMovement.SetDynamicMode();
+                    break;
+                case CameraMode.Static:
+                    cameraMovement.SetStaticMode();
+                    break;
+                case CameraMode.None:
+                    cameraMovement.SetNoneMode();
+                    break;
+            }
+        }
+
 
     }
     public void StartAnim(List<CutSceneObject> objectsToAnim, DialogSO dialog)
@@ -88,7 +112,7 @@ public class CutSceneManager : MonoBehaviour
                 case CutSceneObjectType.Camera:
                     cutSceneObject.AnimationGO.AddClip(cutSceneObject.AnimClip, cutSceneObject.Name);
                     previousCameraMode = cutSceneObject.AnimationGO.gameObject.GetComponent<CameraMovement>().curretMode;
-                    cutSceneObject.AnimationGO.gameObject.GetComponent<CameraMovement>().curretMode = CameraMode.None;
+                    cameraMovement.SetNoneMode();
                     break;
 
             }

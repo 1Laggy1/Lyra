@@ -6,6 +6,7 @@ public class NPCAI : NetworkBehaviour
 {
     public string NameOfAI = "default";
     public Vector2 TargetPosition;
+    
     [SerializeField]
     private float jumpForce = 5f; // Force for jumping
     [SerializeField]
@@ -24,6 +25,8 @@ public class NPCAI : NetworkBehaviour
     public bool TargetIsEnemy;
 
     private bool canJump = true; // Flag to control jump cooldown
+    public Animator animator;
+    public Transform sprite;
 
     void Start()
     {
@@ -49,6 +52,7 @@ public class NPCAI : NetworkBehaviour
 
     public void WalkNow(Vector2 targetPosition, bool targetIsEnemy)
     {
+        StartWalkingAnim();
         TargetPosition = targetPosition;
         isWalking = true;
         TargetIsEnemy = targetIsEnemy;
@@ -56,6 +60,7 @@ public class NPCAI : NetworkBehaviour
 
     public void StopWalking()
     {
+        StopWalkingAnim();
         isWalking = false;
         TargetPosition = Vector2.zero;
         rb.velocity = new Vector2(0, rb.velocity.y);
@@ -77,6 +82,14 @@ public class NPCAI : NetworkBehaviour
 
         // Оновлюємо швидкість об'єкта
         rb.velocity = new Vector2(newSpeed, rb.velocity.y);
+        if (newSpeed < 0)
+        {
+            WalkingLeft();
+        }
+        else
+        {
+            WalkingRight();
+        }
 
         // Перевірка на потребу стрибка
         if (TargetPosition.y - thisTransform.position.y > 2 && IsGrounded())
@@ -130,5 +143,25 @@ public class NPCAI : NetworkBehaviour
         Vector2 direction = new Vector2(thisTransform.localScale.x, 0); // Left or right
         RaycastHit2D hit = Physics2D.Raycast(thisTransform.position, direction, 0.7f, obstacleLayer);
         return hit.collider != null;
+    }
+    [ClientRpc]
+    public void StartWalkingAnim()
+    {
+        animator.SetBool("Run", true);
+    }
+    [ClientRpc]
+    public void StopWalkingAnim()
+    {
+        animator.SetBool("Run", false);
+    }
+    [ClientRpc]
+    public void WalkingRight()
+    {
+        sprite.localScale = new Vector3(Mathf.Abs(sprite.localScale.x), sprite.localScale.y, sprite.localScale.z);
+    }
+    [ClientRpc]
+    public void WalkingLeft()
+    {
+        sprite.localScale = new Vector3(-Mathf.Abs(sprite.localScale.x), sprite.localScale.y, sprite.localScale.z);
     }
 }
