@@ -20,6 +20,7 @@ public class MyNetworkManager : NetworkManager
     SteamLobby steamLobby;
     bool firstClient = true;
     GameObject FirstPlayer;
+    GameObject SecondPlayer;
 
 
     public async void StartManager()
@@ -88,9 +89,13 @@ public class MyNetworkManager : NetworkManager
 
     void OnCreateCharacter(NetworkConnectionToClient conn, ConnectMessage message)
     {
-        GameObject gameobject = (message.Message == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
-        NetworkServer.AddPlayerForConnection(conn, gameobject);
+        SecondPlayer = (message.Message == "Kayden") ? Instantiate(kaydenPref) : Instantiate(lyraPref);
+        SecondPlayer.transform.position = (message.Message == "Kayden") ? GameObject.FindGameObjectWithTag("KaydenSpawnPoint").transform.position
+        : GameObject.FindGameObjectWithTag("LyraSpawnPoint").transform.position;
+        SecondPlayer.transform.position = new Vector3(SecondPlayer.transform.position.x, SecondPlayer.transform.position.y, 0);
+        NetworkServer.AddPlayerForConnection(conn, SecondPlayer);
         Time.timeScale = 1;
+        SecondPlayer.GetComponent<PlayerCombat>().playerDied += PlayerDied;
     }
 
     IEnumerator SpawnHostPlayer()
@@ -104,7 +109,20 @@ public class MyNetworkManager : NetworkManager
             Time.timeScale = 0;
         FirstPlayer.transform.position = (NetworkManagerConfig.Character == "Kayden") ? GameObject.FindGameObjectWithTag("KaydenSpawnPoint").transform.position
         : GameObject.FindGameObjectWithTag("LyraSpawnPoint").transform.position;
+        FirstPlayer.transform.position = new Vector3(FirstPlayer.transform.position.x, FirstPlayer.transform.position.y, 0);
+        FirstPlayer.GetComponent<PlayerCombat>().playerDied += PlayerDied;
 
+    }
+
+    void PlayerDied()
+    {
+        ServerChangeScene(SceneManager.GetActiveScene().name);
+        FirstPlayer.transform.position = (NetworkManagerConfig.Character == "Kayden") ? GameObject.FindGameObjectWithTag("KaydenSpawnPoint").transform.position
+        : GameObject.FindGameObjectWithTag("LyraSpawnPoint").transform.position;
+        FirstPlayer.transform.position = new Vector3(FirstPlayer.transform.position.x, FirstPlayer.transform.position.y, 0);
+        SecondPlayer.transform.position = (SecondPlayer.name == "Kayden(Clone)") ? GameObject.FindGameObjectWithTag("KaydenSpawnPoint").transform.position
+        : GameObject.FindGameObjectWithTag("LyraSpawnPoint").transform.position;
+        SecondPlayer.transform.position = new Vector3(SecondPlayer.transform.position.x, SecondPlayer.transform.position.y, 0);
     }
     public override void OnApplicationQuit()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class WalkableEnemy : Enemy
 {
     public float detectionRadius = 5f; // Radius for detecting the player
+    public bool SeeAllTheTime;
     private List<Transform> playersTransforms = new List<Transform>();
     private Transform currentPlayer;
     public NPCAI npcAI;
@@ -45,7 +46,7 @@ public class WalkableEnemy : Enemy
             FindClosestPlayer();
             float distanceToPlayer = Vector2.Distance(transform.position, currentPlayer.position);
 
-            if (distanceToPlayer <= detectionRadius)
+            if (distanceToPlayer <= detectionRadius || SeeAllTheTime)
             {
                 // Move towards the player
                 npcAI.WalkNow(currentPlayer.position, true);

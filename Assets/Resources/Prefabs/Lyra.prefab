@@ -81,7 +81,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.53261256, y: 0.18765236}
+  m_Offset: {x: 0.5696123, y: 0.0539611}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -91,7 +91,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.8715482, y: 1.2548301}
+  m_Size: {x: 1.9455477, y: 1.5222126}
   m_EdgeRadius: 0
 --- !u!1 &2244333039126102870
 GameObject:
@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 6416507410797523139}
   - component: {fileID: 5233222097775398489}
   - component: {fileID: 915431781427980288}
+  - component: {fileID: 4453165618072911863}
   m_Layer: 0
   m_Name: Lyra
   m_TagString: Player
@@ -130,7 +131,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3223, y: -0.1077, z: 0}
-  m_LocalScale: {x: 0.8, y: 1.59, z: 1}
+  m_LocalScale: {x: 1, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 975989281966262360}
@@ -323,7 +324,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.13519269}
+  m_Offset: {x: 0, y: -0.007114291}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -333,7 +334,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.7512455}
+  m_Size: {x: 1, y: 1.0358593}
   m_EdgeRadius: 0
 --- !u!50 &512048831873334633
 Rigidbody2D:
@@ -396,8 +397,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.23793907}
-  m_Radius: 0.2620609
+  m_Offset: {x: 0, y: -0.5206273}
+  m_Radius: 0.268041
 --- !u!114 &6416507410797523139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +466,40 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
+--- !u!114 &4453165618072911863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244333039126102870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 1848289942128424528}
+  syncPosition: 0
+  syncRotation: 0
+  syncScale: 1
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 0
+  interpolateRotation: 0
+  interpolateScale: 1
+  coordinateSpace: 0
+  sendIntervalMultiplier: 1
+  timelineOffset: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &5840719842641685578
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +525,7 @@ Transform:
   m_GameObject: {fileID: 5840719842641685578}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.62, z: 0}
+  m_LocalPosition: {x: 0, y: 0.908, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -521,7 +556,7 @@ Transform:
   m_GameObject: {fileID: 6512447008945042166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.55, z: 0}
+  m_LocalPosition: {x: 0, y: -0.889, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -555,7 +590,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19999999, y: 0.10062893, z: 0.16}
+  m_LocalScale: {x: 0.197, y: 0.10883984, z: 0.15760002}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1848289942128424528}

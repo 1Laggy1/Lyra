@@ -30,8 +30,9 @@ public class Notepad : ILyraAbilityItem
         }
         currentDialog++;
     }
-    void Start()
+    public override void Start()
     {
+        base.Start();
         dm = GameObject.FindGameObjectWithTag("DialogManager").GetComponent<DialogManager>();
     }
 }

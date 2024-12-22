@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d56a4b763ec1b429a1c1d7805b8f72, type: 3}
+  m_Name: DialogAtElevator
+  m_EditorClassIdentifier: 
+  Name: DialogAtElevator
+  dialogs:
+  - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
+    Text: What a beautiful sword you have
+    Speed: 0.03
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
+    Text: Thank you{500}, it gives me self-confidence and protection{300}, with it
+      I realize that I am able to do something if necessary, and not just be a target
+      for beating.
+    Speed: 0.05
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
+    Text: I see{300}, so what kind of place is this then?
+    Speed: 0.05
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
+    Text: All I know is that it's an underground complex{300}, where they keep organisms{300},
+      animals, or even people who have some unexplained abilities{200}, physical
+      properties, etc.
+    Speed: 0.05
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
+    Text: And what do they do with you here{200}, do they do some experiments?
+    Speed: 0.05
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
+    Text: Something like that{300}, the problem is that I just don't know half of
+      it because they erase the memory{300}, they want to erase everything, but something
+      still remains.
+    Speed: 0.05
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
+    Text: I understand{500}, but they don't know my real abilities, and they have
+      already put me here{500}, and they haven't tied me up, just this window, through
+      which it is not even clear whether anyone is looking.
+    Speed: 0.05
+    WaitWhenEnded: 2
+  - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
+    Text: Believe me{500}, they know a lot{500}, and they will get what they want
+      from you, if not{500}, God knows what they will do to you
+    Speed: 0.05
+    WaitWhenEnded: 2

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
+using Steamworks;
 using UnityEngine;
 
 public class ILyraAbilityItem : NetworkBehaviour
@@ -11,9 +12,35 @@ public class ILyraAbilityItem : NetworkBehaviour
     AudioSource audioSource;
     [SerializeField]
     LyraSpellType lyraSpellType;
+    [SerializeField]
+    public GameObject LyraItem;
     public virtual void UseAbility()
     {
         StartAudio();
+    }
+    public virtual void Start()
+    {
+        Debug.Log("Start");
+        StartCoroutine(GetLyraAbility());
+    }
+    IEnumerator GetLyraAbility()
+    {
+        Debug.Log("Start finding Lyra");
+        yield return new WaitUntil(() => GameObject.Find("Lyra(Clone)") != null);
+        GameObject.Find("Lyra(Clone)").GetComponent<LyraAbility>().AbilityActivatedBool += AbilityActivated;
+        Debug.Log("Lyra finded");
+    }
+    void AbilityActivated(bool activated)
+    {
+        Debug.Log("Lyra ability used");
+        if (activated)
+        {
+            LyraItem.SetActive(true);
+        }
+        else
+        {
+            LyraItem.SetActive(false);
+        }
     }
     [Command(requiresAuthority = false)]
     public void StartAudio()

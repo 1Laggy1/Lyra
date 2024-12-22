@@ -19,6 +19,9 @@ public class MainMenu : MonoBehaviour
     string clientType;
     public GameObject networkManagerKCPPrefab;
     public GameObject networkManagerSteamPrefab;
+    string lastSceneName;
+    [SerializeField]
+    TMP_Text lastSceneNametxt;
 
     void Start()
     {
@@ -57,12 +60,20 @@ public class MainMenu : MonoBehaviour
             // Знищення NetworkManager після завершення всіх процесів
             //Destroy(nm);
         }
+        lastSceneName = PlayerPrefs.GetString("LastSceneName");
+        lastSceneNametxt.text = lastSceneName;
     }
 
 
     public void Play()
     {
         NetworkManagerConfig.CurrentSceneLoading = "Level0";
+        Main.SetActive(false);
+        ChooseTypeOfClient.SetActive(true);
+    }
+    public void Continue()
+    {
+        NetworkManagerConfig.CurrentSceneLoading = lastSceneName;
         Main.SetActive(false);
         ChooseTypeOfClient.SetActive(true);
     }

@@ -71,9 +71,12 @@
     <Compile Include="Assets\Scripts\KaydenAbility.cs" />
     <Compile Include="Assets\Scripts\PlayerAbility.cs" />
     <Compile Include="Assets\Scripts\CutSceneManager.cs" />
+    <Compile Include="Assets\Scripts\DialogOnStart.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
+    <Compile Include="Assets\Scripts\TpToSafe.cs" />
     <Compile Include="Assets\Scripts\ConnectMessage.cs" />
     <Compile Include="Assets\Scripts\LyraAbility.cs" />
+    <Compile Include="Assets\Scripts\TutorialHere.cs" />
     <Compile Include="Assets\Scripts\WalkableEnemy.cs" />
     <Compile Include="Assets\Scripts\ConsoleToGUI.cs" />
     <Compile Include="Assets\Scripts\BeetleEnemy.cs" />
@@ -91,6 +94,7 @@
     <Compile Include="Assets\Scripts\PlayerCombatRange.cs" />
     <Compile Include="Assets\Scripts\InputProvider.cs" />
     <Compile Include="Assets\Scripts\Steamworks.NET\SteamManager.cs" />
+    <Compile Include="Assets\Scripts\RockFalling.cs" />
     <Compile Include="Assets\Scripts\LyraSpellsAudios.cs" />
     <Compile Include="Assets\Scripts\CharacterSelection.cs" />
     <Compile Include="Assets\Scripts\DialogCharacter.cs" />
@@ -104,11 +108,15 @@
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\WalkAI.cs" />
     <Compile Include="Assets\Scripts\StartSpawnHere.cs" />
+    <Compile Include="Assets\Scripts\LyraAnimAbilityItem.cs" />
     <Compile Include="Assets\Scripts\CutSceneInputProvider.cs" />
     <Compile Include="Assets\Scripts\MyNetworkManager.cs" />
     <Compile Include="Assets\Scripts\DialogManager.cs" />
     <Compile Include="Assets\Scripts\CenterTextManager.cs" />
+    <Compile Include="Assets\Scripts\RockThrowing.cs" />
+    <Compile Include="Assets\Scripts\Rock.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\LevelToAnimItem.cs" />
     <Compile Include="Assets\Scripts\vent.cs" />
     <Compile Include="Assets\Scripts\Notepad.cs" />
     <Compile Include="Assets\Scripts\CutScene.cs" />

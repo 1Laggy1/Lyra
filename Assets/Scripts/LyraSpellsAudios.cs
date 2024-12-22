@@ -8,4 +8,5 @@ public class LyraSpellsAudios : ScriptableObject
     public List<AudioClip> EasySpells = new List<AudioClip>();
     public List<AudioClip> MediumSpells = new List<AudioClip>();
     public List<AudioClip> HeavySpells = new List<AudioClip>();
+    public GameObject LyraItem;
 }

@@ -53,6 +53,10 @@ public class SpawnManager : NetworkBehaviour
                     GameObject go = Spawn(attackInfo.Go, attackInfo.Spawnpoint);
                     spawnedGos++;
                     go.GetComponent<Entity>().EntityDied += EnemyDies;
+                    if (attackInfo.SeeAllTheTime)
+                    {
+                        go.GetComponent<WalkableEnemy>().SeeAllTheTime = true;
+                    }
                 }
             }
 

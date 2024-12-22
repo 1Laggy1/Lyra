@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d56a4b763ec1b429a1c1d7805b8f72, type: 3}
   m_Name: ThreeLyraTalking 2
   m_EditorClassIdentifier: 
+  Name: LyraTalkThree
   dialogs:
   - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
-    Text: So you've been here for a long time? What is this place, why did they bring
-      me here? How did you get here?
+    Text: So you've been here for a long time?{200} What is this place{100}, why
+      did they bring me here?{500} How did you get here?
+    Speed: 0.03
+    WaitWhenEnded: 3
   - Character: {fileID: 11400000, guid: baf5ea95c598d1643a1a2fe1d23ec606, type: 2}
     Text: I don't know the answer to any of your questions, so show me what else
-      you're capable of, I'm just curious
+      you're capable of,{700} just curious
+    Speed: 0.03
+    WaitWhenEnded: 3

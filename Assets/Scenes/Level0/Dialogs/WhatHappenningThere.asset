@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d56a4b763ec1b429a1c1d7805b8f72, type: 3}
   m_Name: WhatHappenningThere
   m_EditorClassIdentifier: 
+  Name: WhatHappen
   dialogs:
   - Character: {fileID: 11400000, guid: 0324fdcb27d82074382f52ca9a381b77, type: 2}
     Text: Need to see what's going on there.
+    Speed: 0.03
+    WaitWhenEnded: 3
