@@ -2,6 +2,10 @@
 
 Story based 2d multiplayer platformer for 2 players.
 
+All systems is reviewed in my video:
+
+[Youtube link](https://www.youtube.com/watch?v=oj7Uv_QP9XQ)
+
 # Expected functionality
 
 We expect to made multiplayer using mirror and steam frameworks. Also planning to add features like steam remote play and ip connecting.
@@ -44,3 +48,12 @@ Lyra, on the other hand, is a mystery wrapped in a quiet, intense presence. Her 
 Their paths collide when they both wake up in an underground complex, each unsure of how they arrived. A strange security breach happened, that opened all cells and doors in facility. The facility is a labyrinth of advanced technology and deadly traps designed to test the limits of human capability.                    
 
 Together, they must navigate through treacherous obstacles and different strange biological forms that was made using expirements in this facility, relying on each other's unique strengths to survive and escape. As they journey deeper, their bond is tested in unexpected ways, revealing emotional complexities beneath their mission. The game blends puzzle-solving, action, and teamwork as players explore a world filled with hidden secrets and challenges.
+
+## License
+
+Copyright (c) 2025 Andrew Shchigol, Oleksandr Nahrebelnyi  
+All rights reserved.
+
+This repository is for viewing and educational purposes only.  
+You are not allowed to copy, modify, distribute, or use the code
+in your own projects without explicit permission from the authors.
